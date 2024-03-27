@@ -1,0 +1,303 @@
+%%% Exemplo de utilização da classe ITA
+%%%
+%%%   por        Fábio Fagundes Silveira   - ffs [at] ita [dot] br
+%%%              Benedito C. O. Maciel     - bcmaciel [at] ita [dot] br
+%%%              Giovani Volnei Meinertz   - giovani [at] ita [dot] br
+%%%              Hudson Alberto Bode       - bode [at] ita [dot]br
+%%%              P. I. Braga de Queiroz    - pi [at] ita [dot] br
+%%%              Jorge A. B. Gripp         - gripp [at] ita [dot] br
+%%%              Juliano Monte-Mor         - jamontemor [at] yahoo [dot] com [dot] br
+%%%              Tarcisio A. B. Gripp      - tarcisio.gripp [at] gmail [dot] com
+%%%              Alejandro Rios            - aarc.88 [at] gmail [dot] com
+%%%              Fábio Malacco Moreira     - fabiom91 [at] gmail [dot] com
+%%%
+%%%   Versão para overleaf:
+%%%   por        Alejandro A. Rios Cruz    - aarc.88@gmail.com
+%%%              Saulo Gómez               - sagomezs@unal.edu.co
+%%%              Ocimar Santos             - ocimar.acad@gmail.com
+%%%
+%%% Tese.tex  2024-03-11
+%%% $HeadURL: https://github.com/redhatturtle/ita-template $
+%%% $HeadURL: https://github.com/AlejandroRios/Template_Thesis_ITA $
+%%% $HeadURL: http://www.apgita.org.br/apgita/teses-e-latex.php $
+%%% $HeadURL: file:///opt/repositorioITALUS/classeITA/tags/versao-2.1/ExemploTeseITA.tex $
+%%%
+%%% ITALUS
+%%% Instituto Tecnológico de Aeronáutica --- ITA, Sao Jose dos Campos, Brasil
+%%% HomePages:        http://www.comp.ita.br/italus
+%%%                   http://groups.yahoo.com/group/italus/
+%%% Discussion list: italus {at} yahoogroups.com
+%%%
+
+%===============================================================================
+% Para alterar o TIPO DE DOCUMENTO, preencher a linha abaixo \documentclass[?]{?}
+%   \documentclass[dsc]{ita} = Tese de Doutorado
+%                  quali     = Exame de Qualificacao
+%                  msc       = Dissertacao de Mestrado
+%                  tg        = Trabalho de Graduacao
+%
+% Para trabalhos em Inglês, adicionar 'eng':
+%   \documentclass[dsc, eng]{ita}
+%
+% Para 'Draft Version'/'Versão Preliminar' com data no rodapé, adicionar 'dv':
+%   \documentclass[dsc, eng, dv]{ita}
+%===============================================================================
+% As vezes após alterar as opções da classe é preciso compilar mais de 1 vez
+\documentclass[dsc,eng]{ita} % ITA.cls based on standard book.cls
+
+%===============================================================================
+% Pacotes extras recomendados para teses
+%===============================================================================
+
+% AMS Packages
+%\usepackage{amsmath}     % Ambiente de matemática e equações avançado
+%\usepackage{amsfonts}    % Fontes p/ conjuntos: R, Z, H, etc
+%\usepackage{amssymb}     % Símbolos matemáticos
+%\usepackage{amsthm}      % Theorem writing tools
+
+%\usepackage{epsfig}
+%\usepackage{subfig}
+%\usepackage{multirow}
+%\usepackage{float}
+
+%===============================================================================
+% Identificações (se o trabalho for em inglês, insira os dados em inglês)
+% Para entradas abreviadas de Professora (Profa.) em português escreva: Prof$^\textnormal{a}$.
+%===============================================================================
+% Cursos de Graduação do ITA:
+% - Engenharia Aeronáutica
+% - Engenharia Eletrônica
+% - Engenharia Mecânica-Aeronáutica
+% - Engenharia Civil-Aeronáutica
+% - Engenharia de Computação
+% - Engenharia Aeroespacial
+%
+% Programas de Formação Complementar (PFC):
+% - PFC/F: Engenharia Física
+% - PFC/I: Inovação
+% - PFC/B: Bioengenharia
+% - PFC/C: Engenharia de Controle e Automação
+% - PFC/D: Ciência de Dados
+%
+% Programa de Pós-Graduação e áreas de concentração do ITA:
+% - PG/EAM: Pós-Graduação em Engenharia Aeronáutica e Mecânica
+%   - EAM-1: Projeto Aeronáutico, Estruturas e Sistemas Aeroespaciais
+%   - EAM-2: Propulsão Aeroespacial e Energia
+%   - EAM-3: Materiais, Manufatura e Automação
+% - PG/EEC: Pós-Graduação em Engenharia Eletrônica e Computação
+%   - EEC-D: Dispositivos e Sistemas Eletrônicos
+%   - EEC-I: Informática
+%   - EEC-M: Micro-ondas e Optoeletrônica
+%   - EEC-S: Sistemas e Controle
+%   - EEC-T: Telecomunicações
+% - PG/FIS: Pós-Graduação em Física
+%   - FIS-1: Física Nuclear
+%   - FIS-2: Física Atômica e Molecular
+%   - FIS-3: Física de Plasmas
+%   - FIS-4: Dinâmica Não Linear e Sistemas Complexos
+% - PG/EIA: Pós-Graduação em Engenharia de Infraestrutura Aeronáutica
+%   - EIA-1: Infraestrutura Aeroportuária
+%   - EIA-2: Transporte Aéreo e Aeroportos
+% - PG/CTE: Pós-Graduação em Ciências e Tecnologias Espaciais
+%   - CTE-F: Física e Matemática Aplicadas
+%   - CTE-Q: Química dos materiais
+%   - CTE-P: Propulsão Espacial e Hipersônica
+%   - CTE-S: Sensores e Atuadores Espaciais
+%   - CTE-E: Sistemas Espaciais, Ensaios e Lançamentos
+%   - CTE-G: Gestão Tecnológica
+% - PG/PO : Pós-Graduação em Pesquisa Operacional
+\course{Engenharia Eletrônica e Computação}
+\area{Informática}
+
+% Divisão Acadêmica do ITA (não utilizado no template atual):
+% - IEF: Divisão de Ciências Fundamentais
+% - IEA: Divisão de Engenharia Aeronáutica
+% - IEE: Divisão de Engenharia Eletrônica
+% - IEM: Divisão de Engenharia Mecânica
+% - IEI: Divisão de Engenharia Civil
+% - IEC: Divisão de Ciência da Computação
+%\dept{Engenharia Mecânica}
+
+% Autor
+% Gênero do autor(a): "mas" ou "fem"
+\authorgender{fem}
+% {FirstName}{LastName}
+\author{Clarisse Sieckenius}{de~Souza}
+
+% Endereço do Autor segundo guia de endereçamento dos correios
+% #1 - Tipo + nome do logradouro + número. Ex: "Av. Cidade Jardim 679"
+% #2 - CEP no formato 12345-123
+% #3 - Cidade e sigla do estado, separados por hífen. Ex: "Campinas - SP"
+\itaauthoraddress{Praça Mal Eduardo Gomes 50}
+                 {12228-904}
+                 {S\~{a}o Jos\'{e} dos Campos - SP}
+
+% Titulo do Trabalho/Dissertação/Tese
+\title{Modelo Latex para TG / Dissertação / Tese do ITA}
+
+% Orientador
+% Gênero do orientador(a): "mas" ou "fem"
+\advisorgender{mas}
+% [cargo]{título}{nome}{instituição}
+\advisor{Prof.\ Dr.}{Adalberto Santos Dumont}{ITA}
+
+% Coorientador
+% Caso não haja coorientador, comentar/remover os commandos \coadvisorgender e \coadvisor
+% Gênero do coorientador(a), "mas" ou "fem"
+\coadvisorgender{fem}
+% [cargo]{título}{nome}{instituição}
+\coadvisor{Profa.\ Dra.}{Claudia M. Bauzer Medeiros}{Unicamp}
+
+% Pró-reitor da Pós-graduação
+% Gênero do Pró-Reitor(a): "mas" ou "fem"
+\bossgender{mas}
+% [cargo]{título}{nome}
+\boss{Prof.\ Dr.}{John von Neumann}
+
+%Coordenador do curso no caso de TG
+% Gênero do Coordenador(a) do curso: "mas" ou "fem"
+\bosscoursegender{mas}
+% [cargo]{título}{nome}
+\bosscourse{Prof.\ Dr.}{John Walker}
+
+% Palavras-Chaves informadas pela Biblioteca -> utilizada na CIP
+\kwcip{PalavraChave1}
+\kwcip{PalavraChave2}
+\kwcip{PalavraChave3}
+
+% Membros da banca examinadora
+% {título}{nome}{cargo na banca}{instituição}
+\examiner{Prof.\  Dr. }{Richard Harbert Smith}{Presidente    }{ITA                    }
+\examiner{Prof.\  Dr. }{Alan Turing          }{Membro Externo}{Princeton University   }
+\examiner{Profa.\ Dra.}{Amalie Emmy Noether  }{Membro Externo}{University of Göttingen}
+\examiner{        Dr. }{Linus Torwalds       }{Membro Interno}{Linux Foundation       }
+\examiner{Prof.\  Dr. }{Jean Paul Jacob      }{Membro Interno}{ITA                    }
+
+% Data da defesa (mês em maiúsculo, se trabalho em inglês, e minúsculo se trabalho em português)
+\date{14}{março}{2024}
+
+% Número CDU - (usando somente para TG)
+%\cdu{621.38}
+
+\begin{document}
+  % Folha de Rosto e Capa para o caso do TG
+  \maketitle
+
+  % Dedicatória
+  \begin{itadedication}
+    Aos amigos da Graduação e Pós-Graduação do ITA por motivarem tanto a criação
+    deste template pelo Fábio Fagundes Silveira quanto por motivarem a mim e
+    outras pessoas a atualizarem e aprimorarem este excelente trabalho.
+  \end{itadedication}
+
+  % Agradecimentos
+  \begin{itathanks}
+    \input{texts/cap0/agradecimentos}
+  \end{itathanks}
+
+  % Epígrafe
+  \thispagestyle{empty}
+  \ifhyperref\pdfbookmark[0]{\nameepigraphe}{epigrafe}\fi
+  \begin{flushright}
+    \begin{spacing}{1.15}
+      \mbox{}\vfill
+      {\sffamily\itshape
+      ``If I have seen farther than others,\\
+      it is because I stood on the shoulders of giants.''\\}
+      --- \textsc{Sir Isaac Newton}
+    \end{spacing}
+  \end{flushright}
+
+  % Resumo (em português)
+  \begin{abstract}
+    \noindent
+    \input{texts/cap0/resumo}
+  \end{abstract}
+
+  % Abstract (em inglês)
+  \begin{englishabstract}
+    \noindent
+    \input{texts/cap0/abstract}
+  \end{englishabstract}
+
+  % Lista de figuras (automática e opcional)
+  \listoffigures
+
+  % Lista de tabelas (automática e opcional)
+  \listoftables
+
+  % Lista de abreviaturas (manual e opcional)
+  \listofabbreviations
+  \input{texts/cap0/abreviaturas}
+
+  % Lista de símbolos (manual e opcional)
+  \listofsymbols
+  \input{texts/cap0/simbolos}
+
+  % Índice, que o ITA chama de sumário (automático)
+  \tableofcontents
+
+  \mainmatter % Conteúdo principal
+  \input{texts/cap1/capitulo1.tex} % Introdução
+  \input{texts/cap2/capitulo2.tex} % Revisão Bibliográfica
+  \input{texts/cap3/capitulo3.tex} % Metodologia
+  \input{texts/cap4/capitulo4.tex} % Resultados
+  \input{texts/cap5/capitulo5.tex} % Conclusão
+
+  % Referências Bibliográficas
+  \renewcommand\bibname{\itareferencesnamebabel} % Renomear título do capítulo referências
+  \bibliography{bib/referencias.bib}
+
+  \appendix % Apêndices (opcional)
+  % Caso os apêndices não sejam utilizados comentar ou remover os comandos `input`
+  \input{texts/ape1/apendice1} % Remover ou comentar
+  \input{texts/ape2/apendice2}
+
+  \annex % Anexos (opcional)
+  % Caso anexos não sejam utilizados comentar ou remover os comandos `input`
+  \input{texts/ane1/anexo1}
+  \input{texts/ane2/anexo2}
+
+  %========================
+  =====================================================
+  % Definição da Folha de Registro do Documento (FRD)
+  %=============================================================================
+
+  % Valores dos campos da FRD
+
+  % Data do registro do documento
+  \FRDitadata{26 de março de 2024}
+
+  % Número de registro, fornecido pela biblioteca sob solicitação
+  \FRDitadocnro{DCTA/ITA/TD-314/2024}
+  \FRDitapalavrasautor{PalavraChave1; PalavraChave2; PalavraChave3}
+  \FRDitapalavrasresult{PalavraChave1; PalavraChave2; PalavraChave3}
+  % Difícil de usar variáveis pois essa pagina precisa ser sempre em português
+  \FRDitapalavraapresentacao{
+    ITA, \sjc.
+    Curso de \itaoptioncourse.
+    Programa de Pós-Graduação em \itaworkcourse.
+    Área de \itaworkarea.
+    Orientador(a): \itaadvisortitle\ \itaadvisorname.
+    Coorientador(a):\ \itacoadvisorname.
+    Defesa em 26/03/2024.
+    Publicada em 26/03/2024.
+  }
+  \FRDitapalavraapresentacao{
+    ITA, \sjc.
+    Curso de XXX.
+    Programa de Pós-Graduação em XXX.
+    Área de XXX.
+    Orientador: \itaadvisortitle\ \itaadvisorname.
+    Coorientadora: \itacoadvisortitle\ \itacoadvisorname.
+    Defesa em dd/mm/aaaa.
+    Publicada em dd/mm/aaaa.
+  }
+  \FRDitaresumo{\input{texts/cap0/resumo}}
+  %  Primeiro Parâmetro: Nacional ou Internacional -- N/I
+  %  Segundo parâmetro: Ostensivo, Reservado, Secreto ou Ultrassecreto -- O/R/S/U
+  \FRDitaOpcoes{N}{O}
+  % Cria o formulário
+  \itaFRD
+\end{document}
+% Fim do Documento.

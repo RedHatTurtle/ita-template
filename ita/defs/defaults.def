@@ -1,0 +1,69 @@
+\gdef\italongname{Instituto Tecnol\'{o}gico de Aeron\'{a}utica}
+\gdef\itashortname{ITA}
+\gdef\sjc{S\~{a}o Jos\'{e} dos Campos}
+
+% Trabalho
+\renewcommand{\date}[1]{}                                  % Data
+\renewcommand{\@title}{\@titlebabel}                       % Título
+\newcommand{\cdunumber}{\cdunumberbabel}                   % Número de Classificação decimal universal para biblioteca
+
+% Autor(a)
+\renewcommand{\@author}{\@authorbabel}                     % Nome
+\newcommand{\authorgendermf}{\authorgendermfbabel}         % Gênero da pessoa
+\newcommand{\itaauthortitle}{\itaauthortitlebabel}         % Titulação do autor(a)
+\newcommand{\@authorword}{\@authorwordbabel}               % Autor(a)
+\newcommand{\itaauthoraddress}{\itaauthoraddressbabel}     % Endereço
+
+% Orientador(a)
+\newcommand{\itaadvisorname}{\itaadvisornamebabel}         % Nome, ex: ""
+\newcommand{\advisorgendermf}{\advisorgendermfbabel}       % Gênero da pessoa
+\newcommand{\itaadvisortitle}{\itaadvisortitlebabel}       % Título, ex: "Profa. Dra."
+\newcommand{\itaadvisorword}{\itaadvisorwordbabel}         % Cargo, ex: "Orientador"
+
+% Cooreintador(a)
+\newcommand{\itacoadvisorname}{\itacoadvisornamebabel}     % Nome, ex: ""
+\newcommand{\coadvisorgendermf}{\coadvisorgendermfbabel}   % Gênero da pessoa
+\newcommand{\itacoadvisortitle}{\itacoadvisortitlebabel}   % Título, ex: "Prof. Dr."
+\newcommand{\itacoadvisorword}{\itacoadvisorwordbabel}     % Cargo, ex: "Coorientador"
+
+% Chefe da Divisão de Pós-graduação
+\newcommand{\itabossname}{\itabossnamebabel}               % Nome, ex: ""
+\newcommand{\bossgendermf}{\bossgendermfbabel}             % Gênero da pessoa
+\newcommand{\itabosstitle}{\itabosstitle}                  % Título, ex: "Prof. Dr."
+\newcommand{\itabossword}{\itabosswordbabel}               % Cargo, ex: "Chefe da Divisão de Pós-graduação"
+
+% Coordenador do respectivo curso de graduação
+\newcommand{\itabosscoursename}{\itabosscoursenamebabel}   % Nome  , ex: ""
+\newcommand{\bosscoursegendermf}{\bosscoursegendermfbabel} % Gênero da pessoa
+\newcommand{\itabosscoursetitle}{\itabosscoursetitle}      % Título, ex: "Prof. Dr."
+\newcommand{\itabosscourseword}{\itabosscoursewordbabel}   % Cargo , ex: "Coordenador do respectivo curso de graduação"
+
+\newcommand{\itaworklevel}{\itaworklevelbabel}             % Trabalho/Dissertação/Tese
+\newcommand{\itaworkcourse}{\itaworkcoursebabel}           % Graduação/Mestrado/Doutorado
+\newcommand{\itaworkdept}{\itaworkdeptbabel}               % {(Divisão)}
+\newcommand{\itaworkarea}{\itaworkareababel}               % Área de concentração do programa de PG
+
+\newcommand{\itaoptionlevel}{}                             % tg, msc, dsc ou quali
+\newcommand{\itaoptioncourse}{}                            % Graduação, Mestrado ou Doutorado
+
+\newcommand{\itaspacing}{}                                 % Espaçamento entre linhas
+
+\newcommand{\finalpaper}{\finalpaperbabel}                 % Trabalho de Graduação
+\newcommand{\itatglevel}{\itatglevelbabel}                 % Trabalho de Conclusão de Curso (Graduação)
+
+\newcommand{\courseof}{\courseofbabel}                     % Course of
+
+\newcommand{\itatitletexttg}{\itatitletexttgbabel}
+\newcommand{\itathesisapprovedmemberstg}{\itathesisapprovedmemberstgbabel}
+\newcommand{\itacountrytg}{\itacountrytgbabel}
+
+%===============================================================================
+%Folha de Registro do Documento
+%===============================================================================
+\gdef\FRDitadatababel{data..}
+\gdef\FRDitadocnrobabel{nrodoc..}
+\gdef\FRDitaorgaointernobabel{\italongname\ -- \itashortname}
+\gdef\FRDitapalavrasautorbabel{Palavras chave do autor..}
+\gdef\FRDitapalavrasresultbabel{Palavras chave resultantes..}
+\gdef\FRDitapalavraapresentacaobabel{Curso Programa Area Orientador Data..}
+\gdef\FDRitaabstractcontent{Resumo do Trabalho..}

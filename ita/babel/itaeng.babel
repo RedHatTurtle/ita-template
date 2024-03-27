@@ -1,0 +1,176 @@
+%===============================================================================
+% Trabalho de Graduação (TG)
+%===============================================================================
+\gdef\itaoptioncoursetgbabel{Undergraduate}
+\gdef\itaworkleveltgbabel{Dissertation}
+\gdef\itaauthortitletgbabel{Engineer}
+
+%===============================================================================
+% Dissertação de Mestrado
+%===============================================================================
+\gdef\itaoptioncoursemscbabel{Master's}
+\gdef\itaworklevelmscbabel{Dissertation}
+\gdef\itaauthortitlemscbabel{Master of Science}
+
+%===============================================================================
+% Tese de Doutorado
+%===============================================================================
+\gdef\itaoptioncoursedscbabel{Doctoral}
+\gdef\itaworkleveldscbabel{Thesis}
+\gdef\itaauthortitledscbabel{Doctor of Science}
+
+%===============================================================================
+% Exame de Qualificação de Doutorado
+%===============================================================================
+\gdef\itaworklevelqualibabel{Qualifying Exam}
+\gdef\itaqualifictextbabel{{\nh{
+  \itaworklevel\ presented in partial fulfillment of the requirements for the
+  degree of \itaworktitle\ in the Graduate Program of \itaworkcourse,
+  \itaworkarea\ {A}rea.
+}}}
+\gdef\itaauthortitlequalibabel{Doctor of Science}
+
+
+\gdef\itanametitlequalibabel{\itashortname\ -- \textsc{\italongname}}
+\gdef\itaposnametitlequalibabel{\textsc{Graduate in \itaworkcourse}}
+\gdef\itaarenametitlequalibabel{\textsc{\itaworkarea\ Area}}
+
+%===============================================================================
+% Tese
+%===============================================================================
+\gdef\itatitletextbabel{\nh{
+  \itaworklevel\ presented to the \italongname,
+  in partial fulfillment of the requirements for the degree of \itaauthortitle\
+  in the Graduate Program of \itaworkcourse, Field of \itaworkarea}.
+}
+
+\gdef\itathesisapprovedmembersbabel{
+  \itaworklevel\ approved in its final version by signatories below:
+}
+
+\gdef\itacountrybabel{Brazil}
+
+%===============================================================================
+% Trabalho de Graduação (TG)
+%===============================================================================
+\gdef\itatitletexttgbabel{\nh{
+  \itaworklevel presented to the \italongname,
+  in partial fulfillment of the requirements for the conclusion of the course in
+  \itaworkcourse.
+}}
+
+\gdef\itathesisapprovedmemberstgbabel{
+  This publication was accepted as Final Dissertation of Undergraduate Degree
+}
+
+\gdef\itacountrytgbabel{Brazil}
+
+%===============================================================================
+% Glossário
+%===============================================================================
+\gdef\itaglossarynamebabel{Glossary}
+
+%===============================================================================
+% Referências
+%===============================================================================
+\gdef\itareferencesnamebabel{Bibliography}
+
+%===============================================================================
+% Títulos Diversos
+%===============================================================================
+\gdef\namecover{Cover}
+\gdef\listofabbreviationsname{List of Abbreviations and Acronyms}
+\gdef\listofsymbolsname{List of Symbols}
+\gdef\nameepigraphe{Epigraph}
+\gdef\namededicatory{Dedication}
+\gdef\nameacknowledgment{Acknowledgments}
+\gdef\nameabstract{Resumo}
+\gdef\nameengabstract{Abstract}
+\gdef\nametitlepage{Face Page}
+\gdef\namecip{Cataloging-in-Publication}
+\gdef\namepageexaminersbookmark{Thesis Committee Composition:}
+\gdef\namepageexaminers{Thesis Committee Composition:}
+\gdef\namecontents{Contents}
+\gdef\nameannex{Annex}
+\gdef\itafigurenamebabel{Figure}
+\gdef\itatablenamebabel{Table}
+\gdef\itadvnamebabel{Draft Version:}
+\gdef\itapagedocregbabel{Folha de Registro do Documento}
+
+%===============================================================================
+% Defaults
+%===============================================================================
+\gdef\@titlebabel{Work Title}                                      %{Titulo do Trabalho}
+\gdef\@authorwordbabel{Author}                                     % Author, mas or fem is the same in english
+\gdef\@authorbabel{Author's Name}                                  %{Nome do Autor}
+\gdef\itaauthoraddressbabel{xxx, foo Street}                       %{Rua Tal, xxx}
+
+\gdef\itaadvisornamebabel{Advisor Placeholder Name}                %{Nome do Orientador}
+\gdef\itaadvisortitlebabel{Prof.\ Dr.}                             %{Prof. Dr.}
+\gdef\itaadvisorwordbabel{Advisor}                                 %{Orientador}
+
+\gdef\itacoadvisornamebabel{Coadvisor Placeholder Name}            %{Nome do Coorientador}
+\gdef\itacoadvisortitlebabel{Prof.\ Dr.}                           %{Prof. Dr.}
+\gdef\itacoadvisorwordbabel{Co-advisor}                            %{Coorientador}
+
+%\gdef\itabossnamebabel{Prorector of Graduate Studies' Name}
+\gdef\itabossnamebabel{Dean of Graduate Studies' Name}            % {Nome do Pro-Reitor de Pós-Graduação}
+\gdef\itabosstitle{Prof.\ Dr.}                                    % {Prof. Dr.}
+\gdef\itabosswordbabel{Dean of Graduate Studies}                  % {Pro-Reitor de Pós-Graduação}
+
+\gdef\itabosscoursenamebabel{Name of the Course Coordinator of \itaworkcourse} % {Nome do coordenador do respectivo curso de graduação}
+\gdef\itabosscoursetitle{Prof.\ Dr.}                                           % {Prof. Dr.}
+\gdef\itabosscoursewordbabel{Course Coordinator of \itaworkcourse}             % {Coordenador do respectivo curso de graduação}
+
+\gdef\itaworklevelbabel{(Document)}                                % {(Documento)}
+\gdef\itaworkcoursebabel{(Course)}                                 % {(Curso)}
+%\gdef\itaworkdeptbabel{(Division)}                                 % {(Divisão)}
+\gdef\itaworkareababel{(Area)}                                     % {(Area)}
+\gdef\itaauthortitlebabel{(Title)}                                 % {(Título)}
+\gdef\courseofbabel{Course of}                                     % {Course of}
+
+\gdef\cdunumberbabel{CDU}                                          % Número de Registro para organização nas prateleiras da biblioteca..}
+
+\gdef\authorgendermfbabel{mf}                                      % mas ou fem
+\gdef\advisorgendermfbabel{mf}                                     % mas ou fem
+\gdef\coadvisorgendermfbabel{mf}                                   % mas ou fem
+\gdef\bossgendermfbabel{mf}                                        % mas ou fem
+\gdef\bosscoursegendermfbabel{mf}                                  % mas ou fem
+
+\gdef\finalpaperbabel{Final Paper} % Trabalho de Graduação
+\gdef\itatglevelbabel{Final paper (Undergraduation study)} % Final paper (Undergraduation study)
+
+%===============================================================================
+% Pagina CIP
+%===============================================================================
+\gdef\itaciptitlebabel{Cataloging-in Publication Data}
+\gdef\itacipbibbabel{Documentation and Information Division}
+
+\gdef\itacipdata1babel {
+  \itaoptioncourse\ \itaworklevel\ --
+  \itaworkcourse\
+  \ifthenelse{\equal{\itaoptionlevel}{tg}}{Degree}{Program}\
+  \ifthenelse{\equal{\itaoptionlevel}{tg}}{}      {. Area of \itaworkarea}\ --
+  \italongname, \@publyear.
+  Advisor: \itaadvisortitle\ \itaadvisorname.
+  \@ifundefined{@coadvisor}{}{Co-advisor: \itacoadvisortitle\ \itacoadvisorname.}
+  \par
+  \vspace{\baselineskip}
+  \@cipkw\ I. \italongname. II.~Title.\par
+}
+
+\gdef\itarefbibnamecipbabel{BIBLIOGRAPHIC REFERENCE}
+
+\gdef\itacip2babel{\itaoptioncourse\ \itaworklevel\ -- \italongname, \sjc, \@publyear.}
+
+\gdef\itacedirnamebabel{CESSION OF RIGHTS}
+\gdef\itacipauthorname{AUTHOR'S NAME:}
+\gdef\itacipworktitlebabel{PUBLICATION TITLE:}
+\gdef\itacipworktype{PUBLICATION KIND/YEAR:}
+
+\gdef\itacesdirtextbabel{
+  It is granted to \italongname\ permission to reproduce copies of this work and
+  to loan or to sell copies only for academic and scientific purposes.
+  The author reserves all other publication rights and no part of this work can
+  be reproduced without the authorization of the author.
+}

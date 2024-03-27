@@ -1,0 +1,4 @@
+\renewcommand{\itaoptionlevel} {msc}
+\renewcommand{\itaoptioncourse}{\itaoptioncoursemscbabel} % Mestrado
+\renewcommand{\itaworklevel}   {\itaworklevelmscbabel}    % Dissertação
+\renewcommand{\itaauthortitle} {\itaauthortitlemscbabel}  % Mestre

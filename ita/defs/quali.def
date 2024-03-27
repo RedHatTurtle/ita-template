@@ -1,0 +1,5 @@
+\renewcommand{\itaoptionlevel} {quali}
+\renewcommand{\itaoptioncourse}{\itaoptioncoursedscbabel}  % Doutorado
+\renewcommand{\itaworklevel}   {\itaworklevelqualibabel}   % Exame de Qualificação
+\renewcommand{\itaauthortitle} {\itaauthortitlequalibabel} % Doutor
+\newcommand  {\itaqualifictext}{\itaqualifictextbabel}     % Texto da Qualificação

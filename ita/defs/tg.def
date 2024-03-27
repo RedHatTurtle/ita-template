@@ -1,0 +1,4 @@
+\renewcommand{\itaoptionlevel} {tg}
+\renewcommand{\itaoptioncourse}{\itaoptioncoursetgbabel} % Graduação
+\renewcommand{\itaworklevel}   {\itaworkleveltgbabel}    % Trabalho
+\renewcommand{\itaauthortitle} {\itaauthortitletgbabel}  % Engenheiro

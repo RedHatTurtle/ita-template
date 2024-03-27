@@ -1,0 +1,196 @@
+%===============================================================================
+% Trabalho de Graduação (TG)
+%===============================================================================
+\gdef\itaoptioncoursetgbabel{Gradua\c{c}\~{a}o}
+\gdef\itaworkleveltgbabel{Trabalho}
+\gdef\itaauthortitletgbabel{\ifthenelse{\equal{\authorgendermfbabel}{mas}}{Engenheiro}   {Engenheira}}
+
+%===============================================================================
+% Dissertação de Mestrado
+%===============================================================================
+\gdef\itaoptioncoursemscbabel{Mestrado}
+\gdef\itaworklevelmscbabel{Disserta\c{c}\~{a}o}
+\gdef\itaauthortitlemscbabel{\ifthenelse{\equal{\authorgendermfbabel}{mas}}{Mestre}   {Mestra} em Ci\^{e}ncias}
+
+%===============================================================================
+% Tese de Doutorado
+%===============================================================================
+\gdef\itaoptioncoursedscbabel{Doutorado}
+\gdef\itaworkleveldscbabel{Tese}
+\gdef\itaauthortitledscbabel{\ifthenelse{\equal{\authorgendermfbabel}{mas}}{Doutor}   {Doutora} em Ci\^{e}ncias}
+
+%===============================================================================
+% Exame de Qualificação de Doutorado
+%===============================================================================
+\gdef\itaworklevelqualibabel{Exame de Qualifica\c{c}\~{a}o}
+\gdef\itaqualifictextbabel{{\nh{
+  \itaworklevel\ submetido \`{a} avalia\c{c}\~{a}o, como requisito parcial para
+  a obten\c{c}\~{a}o do t\'{\i}tulo de \itaauthortitle\ em Ci\^{e}ncias no
+  Programa de P\'{o}s-Gradua\c{c}\~{a}o em \itaworkcourse, \'{A}rea de
+  \itaworkarea.
+}}}
+\gdef\itaauthortitlequalibabel{\ifthenelse{\equal{\authorgendermfbabel}{mas}}{Doutor}   {Doutora}}
+
+\gdef\itanametitlequalibabel{ITA -- \textsc{\italongname}}
+\gdef\itaposnametitlequalibabel{\textsc{P\'{o}s-Gradua\c{c}\~{a}o em \itaworkcourse}}
+\gdef\itaarenametitlequalibabel{\textsc{\'{a}rea de \itaworkarea}}
+
+%===============================================================================
+% Tese ou Dissertação
+%===============================================================================
+\gdef\itatitletextbabel{\nh{
+  \itaworklevel\ apresentada \`{a} Pr\'{o}-Reitoria de P\'{o}s-Gradua\c{c}\~{a}o
+  do \italongname, como parte dos requisitos
+  para obten\c{c}\~{a}o do t{\'\i}tulo de \itaauthortitle\ em Ci{\^e}ncias no
+  Programa de P\'{o}s-Gradua\c{c}\~{a}o em \itaworkcourse, \'{A}rea de
+  \itaworkarea}.
+}
+
+\gdef\itathesisapprovedmembersbabel{
+  \itaworklevel\ aprovada em sua vers\~{a}o final pelos abaixo assinados:
+}
+
+\gdef\itacountrybabel{Brasil}
+
+%===============================================================================
+% Trabalho de Graduação (TG)
+%===============================================================================
+\gdef\itatitletexttgbabel{\nh{
+  \itaworklevel apresentado \`{a} Pr\'{o}-Reitoria de Gradua\c{c}\~{a}o do
+  \italongname, como parte dos requisitos para conclus\~{a}o do curso de
+  \itaworkcourse.
+}}
+
+\gdef\itathesisapprovedmemberstgbabel{
+  Essa publica\c{c}\~{a}o foi aceita como Relat\'{o}rio Final de Trabalho de
+  Gradua\c{c}\~{a}o
+}
+
+\gdef\itacountrytgbabel{Brasil}
+
+%===============================================================================
+% Glossário
+%===============================================================================
+\gdef\itaglossarynamebabel{Gloss\'ario}
+
+%===============================================================================
+% Referências
+%===============================================================================
+\gdef\itareferencesnamebabel{Refer\^encias}
+
+%===============================================================================
+% Títulos das folhas/seções do documento
+%===============================================================================
+\gdef\namecover{Capa}
+\gdef\listofabbreviationsname{Lista de Abreviaturas e Siglas}
+\gdef\listofsymbolsname{Lista de S{\'\i}mbolos}
+\gdef\nameepigraphe{Ep{\'\i}grafe}
+\gdef\namededicatory{Dedicat\'{o}ria}
+\gdef\nameacknowledgment{Agradecimentos}
+\gdef\nameabstract{Resumo}
+\gdef\nameengabstract{Abstract}
+\gdef\nametitlepage{Folha de Rosto}
+\gdef\namecip{Verso da Folha de Rosto}
+\gdef\namepageexaminersbookmark{Folha da Banca}
+\gdef\namepageexaminers{Composi\c{c}\~{a}o da Banca Examinadora:}
+\gdef\namecontents{Sum\'{a}rio}
+\gdef\nameannex{Anexo}
+\gdef\itafigurenamebabel{Figura}
+\gdef\itatablenamebabel{Tabela}
+\gdef\itadvnamebabel{Vers\~{a}o Preliminar:}
+\gdef\itapagedocregbabel{Folha de Registro do Documento}
+
+%===============================================================================
+% Defaults
+%===============================================================================
+\gdef\@titlebabel{T\'{i}tulo do Trabalho}                         % {Título do Trabalho}
+\gdef\@authorwordbabel{Autor}                                     % Gênero do Autor ou Autora
+\gdef\@authorbabel{Nome do Autor}                                 % {Nome do Autor}
+\gdef\itaauthoraddressbabel{Rua Tal, xxx}                         % {Rua Tal, xxx}
+
+% Orientador(a)
+\gdef\itaadvisornamebabel{Nome \ifthenelse{\equal{\advisorgendermf}{mas}}{do Orientador}{da Orientadora}} % Nome
+\gdef\itaadvisortitlebabel    {\ifthenelse{\equal{\advisorgendermf}{mas}}{Prof.\ Dr.}   {Profa.\ Dra.}}   % Título
+\gdef\itaadvisorwordbabel     {\ifthenelse{\equal{\advisorgendermf}{mas}}{Orientador}   {Orientadora}}    % Palavra "Orientador(a)"
+
+% Coorientador(a)
+\gdef\itacoadvisornamebabel{Nome \ifthenelse{\equal{\coadvisorgendermf}{mas}}{do Coorientador}{da Coorientadora}} % Nome
+\gdef\itacoadvisortitlebabel    {\ifthenelse{\equal{\coadvisorgendermf}{mas}}{Prof.\ Dr.}     {Profa.\ Dra.}}     % Título
+\gdef\itacoadvisorwordbabel     {\ifthenelse{\equal{\coadvisorgendermf}{mas}}{Coorientador}   {Coorientadora}}    % Coorientador(a)
+
+% Pró-Reitor(a) de Pós-Graduação
+\gdef\itabossnamebabel{Nome \ifthenelse{\equal{\bossgendermf}{mas}}{do Pr\'{o}-Reitor}{da Pr\'{o}-Reitora}}                           % Nome
+\gdef\itabosstitle         {\ifthenelse{\equal{\bossgendermf}{mas}}{Prof.\ Dr.}       {Profa.\ Dra.}}                                 % Título
+\gdef\itabosswordbabel     {\ifthenelse{\equal{\bossgendermf}{mas}}{Pr\'{o}-Reitor}   {Pr\'{o}-Reitora} de P\'{o}s-Gradua\c{c}\~{a}o} % Cargo
+
+% Coordenador(a) do respectivo curso de graduação
+\gdef\itabosscoursenamebabel{Nome \ifthenelse{\equal{\bosscoursegendermf}{mas}}{do Coordenador}{da Coordenadora} do Curso de \itaworkcourse} % Nome
+\gdef\itabosscoursetitle         {\ifthenelse{\equal{\bosscoursegendermf}{mas}}{Prof.\ Dr.  }  {Profa.\ Dra. }}                              % Título
+\gdef\itabosscoursewordbabel     {\ifthenelse{\equal{\bosscoursegendermf}{mas}}{Coordenador}   {Coordenadora} do Curso de \itaworkcourse}    % Cargo
+
+\gdef\itaworklevelbabel  {(Documento)}                             % {(Documento)}
+\gdef\itaworkcoursebabel {(Curso)}                                 % {(Curso)}
+\gdef\itaworkdeptbabel   {(Divisao)}                               % {(Divisão)}
+\gdef\itaworkareababel   {(Area)}                                  % {(Area)}
+\gdef\itaauthortitlebabel{(Titulo)}                                % {(Titulo)}
+\gdef\courseofbabel      {Curso de}                                % {Curso de}
+
+\gdef\cdunumberbabel{CDU}                                          % Número de Registro para organização nas prateleiras da biblioteca..}
+
+\gdef\authorgendermfbabel{mf}                                      % mas ou fem
+\gdef\advisorgendermfbabel{mf}                                     % mas ou fem
+\gdef\coadvisorgendermfbabel{mf}                                   % mas ou fem
+\gdef\bossgendermfbabel{mf}                                        % mas ou fem
+\gdef\bosscoursegendermfbabel{mf}                                  % mas ou fem
+
+\gdef\finalpaperbabel{Trabalho de Gradua\c{c}\~{a}o}               % Trabalho de Graduação
+\gdef\itatglevelbabel{Trabalho de Conclus\~{a}o de Curso (Gradua\c{c}\~{a}o)}
+                                                                   % Trabalho de Conclusão de Curso (Graduação)
+
+%===============================================================================
+% Pagina CIP
+%===============================================================================
+\gdef\itaciptitlebabel{Dados Internacionais de Cataloga\c{c}\~{a}o-na-Publica\c{c}\~{a}o (CIP)}
+\gdef\itacipbibbabel{Divis\~{a}o de Informa\c{c}\~{a}o e Documenta\c{c}\~{a}o}
+
+\gdef\itacipdata1babel {
+  \itaworklevel\ de \itaoptioncourse\ --
+  \ifthenelse{\equal{\itaoptionlevel}{tg}}{Curso}{Programa} de \itaworkcourse\
+  \ifthenelse{\equal{\itaoptionlevel}{tg}}{}     {. \'{A}rea de \itaworkarea}\ --
+  \italongname, \@publyear.
+  \ifthenelse{\equal{\advisorgendermf}{mas}}{Orientador}{Orientadora}:
+  \itaadvisortitle\ \itaadvisorname.
+  \@ifundefined{@coadvisor}{}{
+    \ifthenelse{\equal{\coadvisorgendermf}{mas}}{Coorientador}{Coorientadora}:
+    \itacoadvisortitle\ \itacoadvisorname.
+  }
+  \par
+  \vspace{\baselineskip}
+  \@cipkw\ I. \italongname. II.~T\'{i}tulo.\par
+}
+
+\gdef\itarefbibnamecipbabel{REFER\^{E}NCIA BIBLIOGR\'{A}FICA}
+
+\gdef\itacip2babel {\itaworklevel\ de \itaoptioncourse\ -- \italongname, \sjc, \@publyear.
+}
+
+\gdef\itacedirnamebabel{CESS\~{A}O DE DIREITOS}
+\gdef\itacipauthorname{NOME \ifthenelse{\equal{\authorgendermf}{mas}}
+                                       {DO AUTOR}
+                                       {DA AUTORA}:}
+\gdef\itacipworktitlebabel{TITULO DO TRABALHO:}
+\gdef\itacipworktype{TIPO DO TRABALHO/ANO:}
+
+\gdef\itacesdirtextbabel{
+  {\'E} concedida ao \italongname permiss\~{a}o para reproduzir c\'{o}pias deste
+  trabalho e para emprestar ou vender c\'{o}pias somente para prop\'{o}sitos
+  acad{\^e}micos e cient{\'\i}ficos.
+  \ifthenelse{\equal{\authorgendermf}{mas}}
+    {O autor}
+    {A autora}
+  reserva todos os outros direitos de publica\c{c}\~{a}o e nenhuma parte deste
+  trabalho pode ser reproduzida sem a autoriza\c{c}\~{a}o
+  \ifthenelse{\equal{\authorgendermf}{mas}}
+    {do autor}
+    {da autora}.
+}
