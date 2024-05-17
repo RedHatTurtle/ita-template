@@ -1,6 +1,6 @@
 %===============================================================================
 % This is the ITA LateX class - classe de documento com padrões do ITA
-% written by
+% Written by:
 %              Fábio Fagundes Silveira   - ffs [at] ita [dot] br
 %              Benedito C. O. Maciel     - bcmaciel [at] ita [dot] br
 %              Giovani Volnei Meinertz   - giovani [at] ita [dot] br
@@ -11,6 +11,13 @@
 %              Tarcisio A. B. Gripp      - tarcisio.gripp [at] gmail [dot] com
 %              Alejandro Rios            -
 %              Fábio Malacco Moreira     - fabiom91 [at] gmail [dot] com
+%
+% With help from:
+%              Reinaldo Fortes
+%              D. Farfan
+%              Dr. Miguel V. S. Frasson!
+%              Dr. Alan Wilter Sousa da Silva - alan@lncc.br
+%              Gibson De Marchi Poltronieri
 %
 % last updated:
 %        $Id: ita.cls 42 2024-03-11$
@@ -40,8 +47,9 @@
 
 %===============================================================================
 \NeedsTeXFormat{LaTeX2e}[2020/01/01]
-\ProvidesClass{ita}[2006/03/10 v2.0 Classe de documento com padrões do ITA]
+\ProvidesClass{ita}[2024/04/01 v4.0 Classe de documento com padrões do ITA]
 
+% Procurar os arquivos da classe dento da pasta ./ita/
 \newcommand{\itaclassfile}[1]{ita/#1}
 
 %===============================================================================
@@ -80,9 +88,10 @@
 }
 
 \DeclareOption{classic}{
-  \newcommand{\itaformatworktitle} [1]{\Large \textbf{#1}}
-  \newcommand{\itaformatauthorname}[1]{\large \textbf{#1}}
-  \newcommand{\itaformattitletext} [1]{\large{#1}}
+  \newcommand{\itaformatworktitle}  [1]{\Large \textbf{#1}}
+  \newcommand{\itaformatauthorname} [1]{\large \textbf{#1}}
+  \newcommand{\itaformattitletext}  [1]{\large{#1}}
+  \newcommand{\itaformatadvisorword}[1]{#1}
 
   \renewcommand{\itaspacing}{1.5}
 }
@@ -97,39 +106,16 @@
 % Herança e Configuração da classe
 %===============================================================================
 \LoadClass[12pt,a4paper,oneside]{book}
-
+\RequirePackage{calc} % Not sure where this is used, or if it's used at all
 \RequirePackage{ifthen}
 
 \if@eng
-   \RequirePackage[english]{babel}
-\else
-   \RequirePackage[english,portuges,brazil]{babel}
-\fi
-
-\if@eng
+  \RequirePackage[english]{babel}
   \input{\itaclassfile{babel/itaeng.babel}}
 \else
+  \RequirePackage[english,portuges,brazil]{babel}
   \input{\itaclassfile{babel/itabr.babel}}
 \fi
-
-%===============================================================================
-% Pacotes extras necessários para a classe ita
-%===============================================================================
-
-\RequirePackage{hyphenat}    % Controles de hifenização
-\RequirePackage{setspace}    % Configura espaçamento de linhas
-\RequirePackage{fancyhdr}    % Controle detalhado de cabeçalhos e rodapés
-\RequirePackage{indentfirst} % Indenta primeiro parágrafo após um header/título
-\RequirePackage{lastpage}    % Introduz label `LastPage` para o comando `\pageref`
-
-\RequirePackage{tabularx}  % Extensão do \tabular com melhores controles de largura
-\RequirePackage{xltabular} % Para tabelas que continuam na página seguinte
-\RequirePackage{array}     % Extensões aos comandos \array e \tabular
-\RequirePackage{xcolor}    % Extensão do pacote `color` com mais opções de definição de cores
-
-% O modelo word oficial do ITA usa fontes de tamanho regular para captions
-% Porém pessoalmente eu prefiro "footnotesize"
-\RequirePackage[labelsep=endash,font=footnotesize]{caption} % Legendas para tabelas e figuras
 
 %===============================================================================
 % Check TeX engine used to compile the document and add distro specific packages
@@ -147,8 +133,8 @@
   % fonts are as good as in XeTeX
   \ifLuaTeX
     % LuaTeX need these packages to break links into two lines
-    \usepackage{url}
-    \usepackage{breakurl}
+    \RequirePackage{url}
+    \RequirePackage{breakurl}
 
     \RequirePackage[luatex]{graphicx}
     \RequirePackage[luatex]{geometry}
@@ -176,6 +162,41 @@
 \fi
 
 %===============================================================================
+% Pacotes extras necessários para a classe ita
+%===============================================================================
+
+\RequirePackage{hyphenat}    % Controles de hifenização
+\RequirePackage{setspace}    % Configura espaçamento de linhas
+\RequirePackage{fancyhdr}    % Controle detalhado de cabeçalhos e rodapés
+\RequirePackage{indentfirst} % Indenta primeiro parágrafo após um header/título
+\RequirePackage{lastpage}    % Introduz label `LastPage` para o comando `\pageref`
+
+\RequirePackage{tabularx}    % Extensão do \tabular com melhores controles de largura
+\RequirePackage{xltabular}   % Para tabelas que continuam na página seguinte
+\RequirePackage{array}       % Extensões aos comandos \array e \tabular
+\RequirePackage{xcolor}      % Extensão do pacote `color` com mais opções de definição de cores
+
+% O modelo word oficial do ITA usa fontes de tamanho regular para captions
+% Porém pessoalmente eu prefiro "footnotesize"
+\RequirePackage[labelsep=endash,font=footnotesize]{caption} % Legendas para tabelas e figuras
+
+%===============================================================================
+% Dimensões padrão de páginas
+%===============================================================================
+
+% Dimensões das páginas
+\geometry{a4paper,
+          %showframe,  % Used only to debug margin settings
+          lmargin=30mm, % Left Margin
+          rmargin=20mm, % Right Margin
+          tmargin=30mm, % Top Margin
+          bmargin=20mm, % Bottom margin
+          verbose,
+          headheight=0.56cm,
+          headsep=0.5cm,
+          footskip=3em}
+
+%===============================================================================
 % Índice
 %===============================================================================
 \RequirePackage{makeidx} % Pacote padrão para gerar índice
@@ -185,6 +206,10 @@
 %===============================================================================
 %\RequirePackage{makeglos} % Pacote padrão para geração de Glossários
 
+% I don't know why but ITA the class had this custom glossary package
+%\RequirePackage{makeglo}
+%\renewcommand{\glossmaxlabelwidth}{\hspace{3cm}}
+
 %===============================================================================
 % Hyperref para termos hiperlinks no índica, citações, etc
 %===============================================================================
@@ -193,18 +218,25 @@
 \definecolor{citered}{HTML}{CC1414} % Citações em vermelho
 \definecolor{urlcyan}{HTML}{008080} % URLs em ciano
 
+\definecolor{linkColor}{HTML}{004098} % Links internos em azul
+\definecolor{citeColor}{HTML}{CC1414} % Citações em vermelho
+\definecolor{urlColor}{HTML}{008080} % URLs em ciano
+
 \RequirePackage[debug,
                 breaklinks,
                 pagebackref=true,
                 bookmarksopen=true,
                 colorlinks=true,
-                linkcolor=linkblu,
-                citecolor=citered,
-                urlcolor=urlcyan,
+                linkcolor=linkColor,
+                citecolor=citeColor,
+                urlcolor=urlColor,
                 bookmarksnumbered=true,
                 hyperindex=true,
                 verbose=true]
                {hyperref}
+
+\newif\ifhyperref
+\@ifpackageloaded{hyperref}{\hyperreftrue}{\hyperreffalse}
 
 %===============================================================================
 % Formatação ABNT para citações
@@ -230,33 +262,24 @@
 % Pacotes extras recomendados para teses
 %===============================================================================
 
-% AMS Packages
+% American Mathematical Society packages
 %\RequirePackage{amsmath}     % Ambiente de matemática e equações avançado
 %\RequirePackage{amsfonts}    % Fontes p/ conjuntos: R, Z, H, etc
 %\RequirePackage{amssymb}     % Símbolos matemáticos
-%\RequirePackage{amsthm}      % Theorem writing tools
+%\RequirePackage{amsthm}      % Ambinente para teoremas `\theorem`
 
 %\RequirePackage{epsfig}
 %\RequirePackage{subfig}
 %\RequirePackage{multirow}
 %\RequirePackage{float}
 
-%===============================================================================
-
-% Dimensões das páginas
-\geometry{a4paper,
-          %showframe,  % Used only to debug margin settings
-          lmargin=30mm, % Left Margin
-          rmargin=20mm, % Right Margin
-          tmargin=30mm, % Top Margin
-          bmargin=20mm, % Bottom margin
-          verbose,
-          headheight=0.56cm,
-          headsep=0.5cm,
-          footskip=3em}
-
-\newif\ifhyperref
-\@ifpackageloaded{hyperref}{\hyperreftrue}{\hyperreffalse}
+\RequirePackage{setspace}
+\RequirePackage{fancyhdr}
+\RequirePackage{lastpage}
+\RequirePackage{indentfirst}
+\RequirePackage{caption}
+\RequirePackage{array}
+\RequirePackage{subfigure}
 
 %===============================================================================
 % Alterar os tamanhos de fonte padrão do Tex para os valores usados no template
@@ -315,7 +338,7 @@
   \gdef\@authorfirst{#1}
   \gdef\@authorlast{#2}
 }
-% Endereco do Autor (utilizado no verso da folha de rosto)
+% Endereço do Autor (utilizado no verso da folha de rosto)
 \renewcommand{\itaauthoraddress}[3]{
   \gdef\@itaauthoraddress{#1}
   \gdef\@itaauthorcep{#2}
@@ -327,7 +350,7 @@
 \newcommand{\advisorgender}[1]{
   \renewcommand{\advisorgendermf}{#1}
 }
-% word, title, name
+% [word], title, name
 \newcommand{\advisor}[4][\itaadvisorwordbabel]{
   \renewcommand{\itaadvisorword}{#1}
   \renewcommand{\itaadvisortitle}{#2}
@@ -335,15 +358,14 @@
   \gdef\@itaadvisorinst{#4}
   \gdef\@advisor{#2~#3 \\ #1}
   \gdef\@advisortg{#1 \\ #2~#3 (#4)}
-  %\gdef\itaadvisorword{#1} % This should have been defined already somewhere else
 }
 
-% Coorientador  (opcional)
+% Coorientador (opcional)
 % Gênero do coorientador
 \newcommand{\coadvisorgender}[1]{
    \renewcommand{\coadvisorgendermf}{#1}
 }
-% word, title, name
+% [word], title, name
 \newcommand{\coadvisor}[4][\itacoadvisorwordbabel]{
   \gdef\itacoadvisorword{#1}
   \gdef\itacoadvisortitle{#2}
@@ -353,12 +375,12 @@
   \gdef\@coadvisortg{#1 \\ #2~#3 (#4)}
 }
 
-% Pró-Reitor de Pós-Graduação
+% Pró-Reitor de Pós-Graduação  (Para programas de pós-graduação)
 % Gênero do Pró-reitor da Pós-graduação
 \newcommand{\bossgender}[1]{
   \renewcommand{\bossgendermf}{#1}
 }
-% word, title, name
+% [word], title, name
 \newcommand{\boss}[3][\itabosswordbabel]{
   \renewcommand{\itabossword}{#1}
   \renewcommand{\itabosstitle}{#2}
@@ -366,8 +388,8 @@
   \gdef\@boss {#2~#3 \\ #1}
 }
 
-% Coordenador do respectivo curso de graduação
-% Gênero do Coordenador do curso no caso de TG
+% Coordenador do respectivo curso de graduação (para o caso de TG)
+% Gênero do Coordenador do curso
 \newcommand{\bosscoursegender}[1]{
   \renewcommand{\bosscoursegendermf}{#1}
 }
@@ -412,11 +434,11 @@
                {}
 
     \pdfbookmark[0]{\nametitlepage}{titulo}
-    % Verifica se é uma tese ou um exame de qualificação
-    \ifthenelse{\equal{\itaoptionlevel}{quali}}
-               {\thequalititlepage}
-               {\ifthenelse{\equal{\itaoptionlevel}{tg}}
-                           {\thetgtitlepage}
+    % Verifica se é um TG, um exmae de qualificação ou uma dissertação/tese
+    \ifthenelse{\equal{\itaoptionlevel}{tg}}
+               {\thetgtitlepage}
+               {\ifthenelse{\equal{\itaoptionlevel}{quali}}
+                           {\thequalititlepage}
                            {\thethesistitlepage}
   }
   \end{titlepage}
@@ -467,11 +489,11 @@
   \vfill
   \if@eng
     \begin{spacing}{1.5}
-      S{\~a}o Jos{\'e} dos Campos: \@publmonth\ \@publday, \@publyear
+     \sjc: \@publmonth\ \@publday, \@publyear
     \end{spacing}
   \else
     \begin{spacing}{1.5}
-      \sjc, \@publmonth\ de \@publyear
+      \sjc: \@publday\ de \@publmonth\ de \@publyear
     \end{spacing}
   \fi
 }
@@ -542,7 +564,7 @@
   \noindent
 
   \begin{spacing}{1.5}
-  \noindent \parbox[c]{\textwidth}{\itaformattitletext{\itatitletext}}
+    \noindent \parbox[c]{\textwidth}{\itaformattitletext{\itatitletext}}
   \end{spacing}
 
   \vspace*{\stretch{2}}
@@ -566,22 +588,22 @@
 
   \vspace*{\stretch{3}}
 
-  \begin{spacing}{  1.5}
+  \begin{spacing}{1.5}
     \@advisor
   \end{spacing}
 
   % Coorientador (opcional)
   \@ifundefined{@coadvisor}{}{
     \vspace*{\stretch{2}}
-    \begin{spacing}{  1.5}
+    \begin{spacing}{1.5}
       \@coadvisor
     \end{spacing}
   }
 
   \vspace*{\stretch{2}}
 
-  \begin{spacing}{  1.5}
-  \@boss
+  \begin{spacing}{1.5}
+    \@boss
   \end{spacing}
 
   \vspace*{\stretch{2}}
@@ -596,7 +618,7 @@
   \@listexaminators    % Função para criar a folha de banca
 }
 %===============================================================================
-% Capa do TG
+% Capa de TG
 %===============================================================================
 
 \newcommand{\maketgcover}{%
@@ -648,12 +670,12 @@
   \begin{flushleft}
     \begin{footnotesize}
       \begin{onehalfspacing}
-        {\setlength{\baselineskip}{0.8\baselineskip}
-          \textbf{\itaciptitlebabel} \\
-          \textbf{\itacipbibbabel}\\}
+        \setlength{\baselineskip}{0.8\baselineskip}
+        \textbf{\itaciptitlebabel} \\
+        \textbf{\itacipbibbabel}   \\
         \@cipwindow
         \@bibref
-        \@rights
+      \@rights
       \end{onehalfspacing}
     \end{footnotesize}
   \end{flushleft}
@@ -663,24 +685,24 @@
 % Definição do quadro
 \def\@cipwindow{%
   \framebox[\textwidth]{%
-  \begin{minipage}{\textwidth - 10mm}%
-    \begin{flushleft}
+    \begin{minipage}{\textwidth - 10mm}%
+      \begin{flushleft}
       \vspace*{0.5ex}
       \setlength{\parindent}{1em}%
-      \begin{footnotesize}
-        \begin{onehalfspacing}
-          \setlength{\baselineskip}{0.7\baselineskip}
-          \noindent\@authorlast, \@authorfirst\par
-          \@title\ / \@authorfirst\ \@authorlast.\\
-          \noindent São José dos Campos, \@publyear.\par
-          \NumPenultimaPagina f.\par
-          \vspace{\baselineskip}
-          \itacipdata1babel
-          \vspace{0.4ex}
-        \end{onehalfspacing}
-      \end{footnotesize}
-    \end{flushleft}
-  \end{minipage}%
+        \begin{footnotesize}
+          \begin{onehalfspacing}
+            \setlength{\baselineskip}{0.7\baselineskip}
+            \noindent\@authorlast, \@authorfirst\par
+            \@title\ / \@authorfirst\ \@authorlast.\\
+            \noindent São José dos Campos, \@publyear.\par
+            \NumPenultimaPagina f.\par
+            \vspace{\baselineskip}
+            \itacipdata1babel
+            \vspace{0.4ex}
+          \end{onehalfspacing}
+        \end{footnotesize}
+      \end{flushleft}
+    \end{minipage}%
   }%
 }
 
@@ -707,7 +729,7 @@
 
     \vspace{\baselineskip}
 
-    \parbox[c]{\textwidth}{\normalsize\setlength{\baselineskip}{0.7\baselineskip} \itacesdirtextbabel \\}
+    \parbox[c]{\textwidth}{\normalsize\setlength{\baselineskip}{0.7\baselineskip}\itacesdirtextbabel \\}
 
     \vspace*{\stretch{2}}
     \rule{75mm}{0.2mm}\\
@@ -719,7 +741,64 @@
 }
 
 %===============================================================================
-% Folha de Banca Examinadora
+% Folha de Banca Examinadora para TG
+%===============================================================================
+\newcommand{\@listexaminatorstg}
+{
+  \newpage
+  \pdfbookmark[0]{\namepageexaminersbookmark}{aprovacao}
+  \thispagestyle{empty}
+
+  \noindent
+
+  % Folha de Banca para TG
+  \begin{spacing}{1.2}
+    \begin{center}
+      \itaformatworktitle{\MakeUppercase{\@title}}
+      \vfill
+      \small{\itathesisapprovedmemberstg}
+      \vspace*{\stretch{3}}
+
+      \hspace{3cm}\hrulefill\hspace{3cm}
+      \par
+      \small{\@authorfirst\ \@authorlast
+      \par
+      \@authorword\ifthenelse{\equal{\authorgendermf}{mas}}{}{\if@eng \else a\fi}}
+      \vspace*{\stretch{1}}
+
+      \hspace{3cm}\hrulefill\hspace{3cm}
+      \par
+      \small{\itaadvisorname\ (\@itaadvisorinst )
+      \par
+      \itaadvisorword}
+      \vspace*{\stretch{1}}
+
+      % Coorientador (opcional)
+      \@ifundefined{@coadvisor}{}{
+        \hspace{3cm}\hrulefill\hspace{3cm}
+        \par
+        \small{\itacoadvisorname\ (\@itacoadvisorinst )
+        \par
+        \itacoadvisorword}
+        \vspace*{\stretch{1}}
+      }
+
+      \hspace{3cm}\hrulefill\hspace{3cm}
+      \par
+      \small{\@bosscourse}
+      \vspace*{\stretch{2}}
+
+      \if@eng
+        \small{S{\~a}o Jos{\'e} dos Campos: \@publmonth\ \@publday, \@publyear.}
+      \else
+        \small{S{\~a}o Jos{\'e} dos Campos, \@publday\ de \@publmonth\ de \@publyear.}
+      \fi
+    \end{center}
+  \end{spacing}
+}
+
+%===============================================================================
+% Folha de Banca Examinadora para Pós-Graduação
 %===============================================================================
 \newcommand{\@listexaminators}
 {
@@ -728,70 +807,24 @@
   \thispagestyle{empty}
 
   \noindent
-
-  \ifthenelse{\equal{\itaoptionlevel}{tg}}
-  { % Folha de Banca para TG
-    \begin{spacing}{1.2}
-      \begin{center}
-        \itaformatworktitle{\MakeUppercase{\@title}}
-        \vfill
-        \small{\itathesisapprovedmemberstg}
-        \vspace*{\stretch{3}}
-
-        \hspace{3cm}\hrulefill\hspace{3cm}
-        \par
-        \small{\@authorfirst\ \@authorlast
-        \par
-        \@authorword\ifthenelse{\equal{\authorgendermf}{mas}}{}{\if@eng \else a\fi}}
-        \vspace*{\stretch{1}}
-
-        \hspace{3cm}\hrulefill\hspace{3cm}
-        \par
-        \small{\itaadvisorname\ (\@itaadvisorinst )
-        \par
-        \itaadvisorword}
-        \vspace*{\stretch{1}}
-
-        % Coorientador (opcional)
-        \@ifundefined{@coadvisor}{}{
-          \hspace{3cm}\hrulefill\hspace{3cm}
-          \par
-          \small{\itacoadvisorname\ (\@itacoadvisorinst )
-          \par
-          \itacoadvisorword}
-          \vspace*{\stretch{1}}
-        }
-
-        \hspace{3cm}\hrulefill\hspace{3cm}
-        \par
-        \small{\@bosscourse}
-        \vspace*{\stretch{2}}
-
-        \if@eng
-          \small{S{\~a}o Jos{\'e} dos Campos: \@publmonth\ \@publday, \@publyear.}
-        \else
-          \small{S{\~a}o Jos{\'e} dos Campos, \@publday\ de \@publmonth\ de \@publyear.}
-        \fi
-      \end{center}
-    \end{spacing}
-  }
-  { % Folha de Banca para Mestrado/Doutorado
-    \begin{spacing}{1.0}
-      \begin{center}
-        \itaformatworktitle{\MakeUppercase{\@title}}
-        \vfill
-        \itaformatauthorname{\@authorfirst\ \@authorlast}
-        \vfill
-      \end{center}
-
+  \begin{spacing}{1.2}
+    \begin{center}
+      \itaformatworktitle{\MakeUppercase{\@title}}
+      \vfill
+      \itaformatauthorname{\@authorfirst\ \@authorlast}
+      \vfill
+    \end{center}
+    \begin{flushleft}
       \raggedright{\normalsize{\namepageexaminers}}
+    \end{flushleft}
+  \end{spacing}
+  \begin{spacing}{1.0}
+    \begin{flushleft}
       \raggedright\@memberslist
-
-    \end{spacing}
-    \vfill
-    \center
-    \large\textbf{ITA}
-  }
+    \end{flushleft}
+  \end{spacing}
+  \vfill
+  \center\large\textbf{ITA}
 }
 
 %===============================================================================
@@ -801,20 +834,18 @@
 {\thispagestyle{empty}%
   \pdfbookmark[0]{\namededicatory}{dedication}
   \begin{flushright}%
-  \null\vfil \@beginparpenalty\@lowpenalty
-  \vspace{120mm}
-  \hspace{80mm}
-  \begin{minipage}[b]{0.45\textwidth}\begin{spacing}{1.5}}
+    \null\vfil \@beginparpenalty\@lowpenalty
+    \vspace{120mm}
+    \hspace{80mm}
+  \begin{minipage}[b]{0.40\textwidth}\begin{spacing}{1.5}}
 {\end{spacing}\end{minipage}\end{flushright}\par\vfil\null\newpage}
 
 %===============================================================================
 % Agradecimentos
 %===============================================================================
-\newenvironment{itathanks}[1][\nameacknowledgment]{
-  \chapter*{#1}
-  \pdfbookmark[0]{\nameacknowledgment}{acknowledgment}
-}
-{\par\vfil\null\newpage}
+\newenvironment{itathanks}[1][\nameacknowledgment]
+  {\chapter*{#1}\pdfbookmark[0]{\nameacknowledgment}{acknowledgment}}
+  {\par\vfil\null\newpage}
 
 %===============================================================================
 % Resumo
@@ -831,7 +862,7 @@
   {}
 
 %===============================================================================
-% Redefinicao de chapter
+% Redefinição de chapter
 %===============================================================================
 \renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
                       \thispagestyle{empty}%
@@ -842,137 +873,126 @@
 \setlength{\parskip}{.5em}
 
 %===============================================================================
-% Hack: Adicionando Bibliografia, Lista de Figuras, Lista de Tabelas,
-% Lista de Simbolos e Lista de Abreviaturas ao Sumario
+% Hack: Adicionando ao Sumário os segintes itens
+% - Bibliografia
+% - Lista de Figuras
+% - Lista de Tabelas
+% - Lista de Simbolos
+% - Lista de Abreviaturas
 %===============================================================================
 % Bibliografia
 \renewenvironment{thebibliography}[1]
   {\chapter*{\bibname
-  \refstepcounter{chapter}
-  \addcontentsline{toc}{chapter}{\bibname}   % Thanks to D.Farfan
-  \@mkboth{\MakeUppercase{\bibname}}%
-          {\MakeUppercase{\bibname}}}%       % Thanks to ffs :-)
+    \refstepcounter{chapter}
+    \addcontentsline{toc}{chapter}{\bibname}
+    \@mkboth{\MakeUppercase{\bibname}}
+    {\MakeUppercase{\bibname}}}
   \singlespacing
   \flushleft
   \list{\@biblabel{\@arabic\c@enumiv}}%
-        {\settowidth\labelwidth{\@biblabel{#1}}%
-        \leftmargin\labelwidth
-        \advance\leftmargin\labelsep
-        \@openbib@code
-        \usecounter{enumiv}%
-        \let\p@enumiv\@empty
-        \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+  {\settowidth\labelwidth{\@biblabel{#1}}%
+    \leftmargin\labelwidth
+    \advance\leftmargin\labelsep
+    \@openbib@code
+    \usecounter{enumiv}%
+    \let\p@enumiv\@empty
+    \renewcommand\theenumiv{\@arabic\c@enumiv}}%
   \sloppy
   \clubpenalty4000
   \@clubpenalty \clubpenalty
   \widowpenalty4000%
-  \sfcode`\.\@m
-}
-{\def\@noitemerr
-  {\@latex@warning{Empty `thebibliography' environment}}%
-  \endlist}
+  \sfcode`\.\@m}
+  {\def\@noitemerr
+    {\@latex@warning{Empty `thebibliography' environment}}%
+    \endlist}
 
 % Lista de figuras
-\renewcommand\listoffigures{%
-  %\begin{spacing}{  1.5}
-    \if@twocolumn
-      \@restonecoltrue\onecolumn
-    \else
-      \@restonecolfalse
-    \fi
-    \chapter*{\listfigurename
-      \@mkboth{\MakeUppercase{\listfigurename}}%
-              {\MakeUppercase{\listfigurename}}}     % Thanks to Reinaldo Fortes
-    %\addcontentsline{toc}{chapter}{\listfigurename} % Thanks to D.Farfan
-    \pdfbookmark[0]{\listfigurename}{listafiguras}
-    \@starttoc{lof}%
-    \if@restonecol\twocolumn\fi
-  %\end{spacing}
+\renewcommand\listoffigures{
+  \if@twocolumn
+    \@restonecoltrue\onecolumn
+  \else
+    \@restonecolfalse
+  \fi
+  \chapter*{\listfigurename
+    \@mkboth{\MakeUppercase{\listfigurename}}
+            {\MakeUppercase{\listfigurename}}}
+  %\addcontentsline{toc}{chapter}{\listfigurename}
+  \pdfbookmark[0]{\listfigurename}{listafiguras}
+  \@starttoc{lof}%
+  \if@restonecol\twocolumn\fi
 }
 
 % Lista de tabelas
-\renewcommand\listoftables{%
-  %\begin{spacing}{  1.5}
+\renewcommand\listoftables{
     \if@twocolumn
       \@restonecoltrue\onecolumn
     \else
       \@restonecolfalse
     \fi
     \chapter*{\listtablename
-      \@mkboth{\MakeUppercase{\listtablename}}%
-              {\MakeUppercase{\listtablename}}}     % Thanks to Reinaldo Fortes
-    %\addcontentsline{toc}{chapter}{\listtablename} % Thanks do D.Farfan
-    \pdfbookmark[0]{\listtablename}{listatabelas}
+      \@mkboth{\MakeUppercase{\listtablename}}
+              {\MakeUppercase{\listtablename}}}
+  %\addcontentsline{toc}{chapter}{\listtablename}
+  \pdfbookmark[0]{\listtablename}{listatabelas}
     \@starttoc{lot}%
     \if@restonecol\twocolumn\fi
-  %\end{spacing}
 }
 
-% Redefinicao do Sumário
-\renewcommand\tableofcontents{%
-  %\begin{spacing}{  1.5}
-  \if@twocolumn
-    \@restonecoltrue\onecolumn
-  \else
-    \@restonecolfalse
-  \fi
-  \chapter*{\contentsname
-    \pdfbookmark[0]{\namecontents}{contents}
-    \@mkboth{\MakeUppercase{\contentsname}}  %
-            {\MakeUppercase{\contentsname}}} % Thanks to Reinaldo Fortes
-    \@starttoc{toc}%
-  \if@restonecol\twocolumn\fi
-  %\end{spacing}
+% Redefinição do Sumário
+\renewcommand\tableofcontents{
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*{\contentsname
+        \pdfbookmark[0]{\namecontents}{contents}
+        \@mkboth{\MakeUppercase{\contentsname}}
+                {\MakeUppercase{\contentsname}}}
+    \@starttoc{toc}
+    \if@restonecol\twocolumn\fi
 }
 
 % Lista de Abreviaturas
-\newcommand\listofabbreviations{%
-  %\begin{spacing}{  1.5}
-    \begin{flushleft}
+\newcommand\listofabbreviations{
+  \begin{flushleft}
     \if@twocolumn
       \@restonecoltrue\onecolumn
     \else
       \@restonecolfalse
     \fi
     \chapter*{{\listofabbreviationsname}
-      \@mkboth{\MakeUppercase{\listofabbreviationsname}}  % Thanks to Reinaldo Fortes
-              {\MakeUppercase{\listofabbreviationsname}}} %
-      %\addcontentsline{toc}{chapter}{\listofabbreviationsname}%  Thanks to ffs  :-)
-    \pdfbookmark[0]{\listofabbreviationsname}{listaabreviaturas}
-    \@starttoc{loa}%
+      \@mkboth{\MakeUppercase{\listofabbreviationsname}}
+              {\MakeUppercase{\listofabbreviationsname}}}
+  %\addcontentsline{toc}{chapter}{\listofabbreviationsname}
+  \pdfbookmark[0]{\listofabbreviationsname}{listaabreviaturas}
+  \@starttoc{loa}%
     \if@restonecol\twocolumn\fi
-    \end{flushleft}
-  %\end{spacing}
+  \end{flushleft}
 }
 
 % Lista de Símbolos
-\newcommand\listofsymbols{%
-  %\begin{spacing}{  1.5}
-    \if@twocolumn
-      \@restonecoltrue\onecolumn
-    \else
-      \@restonecolfalse
-    \fi
-    \chapter*{\listofsymbolsname
-      \@mkboth{\MakeUppercase{\listofsymbolsname}}%
-              {\MakeUppercase{\listofsymbolsname}}}%         Thanks to Reinaldo Fortes
-    %\addcontentsline{toc}{chapter}{\listofsymbolsname}%      Thanks to ffs  :-)
-    \pdfbookmark[0]{\listofsymbolsname}{listasimbolos}
-    \@starttoc{los}% If this command is enable list of symbols will appears with othe list (list of table or list of figures)
-    \if@restonecol\twocolumn\fi
-  %\end{spacing}
+\newcommand\listofsymbols{
+  \if@twocolumn
+    \@restonecoltrue\onecolumn
+  \else
+    \@restonecolfalse
+  \fi
+  \chapter*{\listofsymbolsname
+    \@mkboth{\MakeUppercase{\listofsymbolsname}}
+            {\MakeUppercase{\listofsymbolsname}}}
+  %\addcontentsline{toc}{chapter}{\listofsymbolsname}
+  \pdfbookmark[0]{\listofsymbolsname}{listasimbolos}
+  \@starttoc{los}
+  \if@restonecol\twocolumn\fi
 }
 
-% Thanks to Dr. Alan Wilter Sousa da Silva - alan@lncc.br
 \renewcommand{\addcontentsline}[3]{%
   \begingroup
     \let\label\@gobble
     \let\textlatin\@firstofone
     \ifx\@currentHref\@empty
-      \Hy@Warning{%
-        No destination for bookmark of \string\addcontentsline,%
-        \MessageBreak destination is added%
-      }%
+      \Hy@Warning{No destination for bookmark of \string\addcontentsline, \MessageBreak destination is added}%
       \phantomsection
     \fi
     \expandafter\ifx\csname toclevel@#2\endcsname\relax
@@ -988,10 +1008,10 @@
     \fi
     \edef\Hy@toclevel{\csname toclevel@#2\endcsname}%
     \Hy@writebookmark{\csname the#2\endcsname}%
-      {#3}%
-      {\@currentHref}%
-      {\Hy@toclevel}%
-      {#1}%
+    {#3}%
+    {\@currentHref}%
+    {\Hy@toclevel}%
+    {#1}%
     \ifHy@verbose
       \typeout{pdftex: bookmark at \the\inputlineno:
         {\csname the#2\endcsname}
@@ -1001,9 +1021,7 @@
         {#1}%
       }%
     \fi
-    \addtocontents{#1}{%
-      \protect\contentsline{#2}{#3}{\thepage}{\@currentHref}%
-    }%
+    \addtocontents{#1}{\protect\contentsline{#2}{#3}{\thepage}{\@currentHref}}%
   \endgroup
 }
 
@@ -1018,23 +1036,23 @@
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0pt}
 % Imprimir rodape com versao preliminar?
-  \if@dv
-     \rfoot{\emph{\itadvnamebabel\ \today }}
-  \fi
+\if@dv
+  \rfoot{\emph{\itadvnamebabel\ \today }}
+\fi
 
 %===============================================================================
 % Membros da banca examinadora
 %===============================================================================
 \newcounter{mecounter}
 \newcommand{\examiner}[4]{
-        \addtocounter{mecounter}{1}
-        \expandafter\gdef\csname metitle\alph{mecounter}\endcsname{#1}
-        \expandafter\gdef\csname mename\alph{mecounter}\endcsname{#2}
-        \expandafter\gdef\csname merole\alph{mecounter}\endcsname{#3}
-        \expandafter\gdef\csname meinst\alph{mecounter}\endcsname{#4}
+  \addtocounter{mecounter}{1}
+  \expandafter\gdef\csname metitle\alph{mecounter}\endcsname{#1}
+  \expandafter\gdef\csname mename\alph{mecounter}\endcsname{#2}
+  \expandafter\gdef\csname merole\alph{mecounter}\endcsname{#3}
+  \expandafter\gdef\csname meinst\alph{mecounter}\endcsname{#4}
 }
 
-\newcommand{\@memberslist}{
+\newcommand{\@memberslist}{%
   \noindent\begin{tabularx}{\textwidth}{l l l l l}
     \@ifundefined{metitlea}  {}{\metitlea\@        & \menamea\@        & \merolea\@        & - & \meinsta\@         \\}
     \@ifundefined{@advisor}  {}{\itaadvisortitle   & \itaadvisorname   & \itaadvisorword   & - & \@itaadvisorinst   \\}
@@ -1053,14 +1071,14 @@
 % Palavras-chave
 %===============================================================================
 \newcommand{\keywords}[1]{%
-    \vfill \noindent\textbf{Palavras--Chave:} #1%
+  \vfill \noindent\textbf{Palavras--Chave:} #1%
 }
 
 %===============================================================================
 % Keywords
 %===============================================================================
 \newcommand{\englishkeywords}[1]{%
-    \vfill \noindent\textbf{Keywords:} #1%
+  \vfill \noindent\textbf{Keywords:} #1%
 }
 
 %===============================================================================
@@ -1068,20 +1086,20 @@
 %===============================================================================
 \newcounter{kwcipcounter}
 \newcommand{\kwcip}[1]{
-        \addtocounter{kwcipcounter}{1}
-        \expandafter\gdef\csname kwcip\alph{kwcipcounter}\endcsname{#1}
+  \addtocounter{kwcipcounter}{1}
+  \expandafter\gdef\csname kwcip\alph{kwcipcounter}\endcsname{#1}
 }
 \newcommand{\@cipkw}{%
-        \@ifundefined{kwcipa}{}{1.~\expandafter\MakeUppercase\kwcipa\@. }%
-        \@ifundefined{kwcipb}{}{2.~\expandafter\MakeUppercase\kwcipb\@. }%
-        \@ifundefined{kwcipc}{}{3.~\expandafter\MakeUppercase\kwcipc\@. }%
-        \@ifundefined{kwcipd}{}{4.~\expandafter\MakeUppercase\kwcipd\@. }%
-        \@ifundefined{kwcipe}{}{5.~\expandafter\MakeUppercase\kwcipe\@. }%
-        \@ifundefined{kwcipf}{}{6.~\expandafter\MakeUppercase\kwcipf\@. }%
-        \@ifundefined{kwcipg}{}{7.~\expandafter\MakeUppercase\kwcipg\@. }%
-        \@ifundefined{kwciph}{}{8.~\expandafter\MakeUppercase\kwciph\@. }%
-        \@ifundefined{kwcipi}{}{9.~\expandafter\MakeUppercase\kwcipi\@. }%
-        \@ifundefined{kwcipj}{}{10.~\expandafter\MakeUppercase\kwcipj\@. }%
+  \@ifundefined{kwcipa}{}{1.~\expandafter\MakeUppercase\kwcipa\@. }%
+  \@ifundefined{kwcipb}{}{2.~\expandafter\MakeUppercase\kwcipb\@. }%
+  \@ifundefined{kwcipc}{}{3.~\expandafter\MakeUppercase\kwcipc\@. }%
+  \@ifundefined{kwcipd}{}{4.~\expandafter\MakeUppercase\kwcipd\@. }%
+  \@ifundefined{kwcipe}{}{5.~\expandafter\MakeUppercase\kwcipe\@. }%
+  \@ifundefined{kwcipf}{}{6.~\expandafter\MakeUppercase\kwcipf\@. }%
+  \@ifundefined{kwcipg}{}{7.~\expandafter\MakeUppercase\kwcipg\@. }%
+  \@ifundefined{kwciph}{}{8.~\expandafter\MakeUppercase\kwciph\@. }%
+  \@ifundefined{kwcipi}{}{9.~\expandafter\MakeUppercase\kwcipi\@. }%
+  \@ifundefined{kwcipj}{}{10.~\expandafter\MakeUppercase\kwcipj\@. }%
 }
 
 %===============================================================================
@@ -1099,8 +1117,7 @@
 }
 
 %===============================================================================
-% Redefinicao do comando \appendix para mostrar 'Apêndice' ou 'Anexo'
-% no Sumario
+% Redefinicao do comando \appendix para mostrar 'Apêndice' ou 'Anexo' no Sumario
 %===============================================================================
 \renewcommand{\appendix}{%
   \cleardoublepage
@@ -1109,14 +1126,14 @@
   \setcounter{section}{0}%
   \def\Hy@appendixstring{appendix}% %%novo string no *.toc, para fazer o hyperlink funcionar
   \def\anexo{%
-  \@ifundefined{chapter}%
-    {\gdef\theHsection{\Alph{section}}}%
-    {\gdef\theHchapter{\Alph{chapter}}}%
-  \xdef\Hy@chapapp{\Hy@appendixstring}%
+    \@ifundefined{chapter}%
+      {\gdef\theHsection{\Alph{section}}}%
+      {\gdef\theHchapter{\Alph{chapter}}}%
+    \xdef\Hy@chapapp{\Hy@appendixstring}%
 
-  \gdef\@chapapp{\appendixname}%
-  \addtocontents{toc}{\SetAppendixTocName{\appendixname}}%
-  \gdef\thechapter{\@Alph\c@chapter}%
+    \gdef\@chapapp{\appendixname}%
+    \addtocontents{toc}{\SetAppendixTocName{\appendixname}}%
+    \gdef\thechapter{\@Alph\c@chapter}%
   }
   \anexo
 }
@@ -1136,14 +1153,14 @@
   \setcounter{section}{0}%
   \def\Hy@appendixstring{annex}% %%novo string no *.toc, para fazer o hyperlink funcionar
   \def\anexo{%
-  \@ifundefined{chapter}%
+    \@ifundefined{chapter}%
     {\gdef\theHsection{\alph{section}}}%
     {\gdef\theHchapter{\alph{chapter}}}%
-  \xdef\Hy@chapapp{\Hy@appendixstring}%
+    \xdef\Hy@chapapp{\Hy@appendixstring}%
 
-  \gdef\@chapapp{\nameannex}%
-  \addtocontents{toc}{\SetAppendixTocName{\nameannex}}%
-  \gdef\thechapter{\@Alph\c@chapter}%
+    \gdef\@chapapp{\nameannex}%
+    \addtocontents{toc}{\SetAppendixTocName{\nameannex}}%
+    \gdef\thechapter{\@Alph\c@chapter}%
   }
   \anexo
 }
@@ -1154,7 +1171,7 @@
 \renewcommand\mainmatter{%
   \cleardoublepage
   \@mainmattertrue
-  \renewcommand{\thepage}{\arabic{page}}}
+  \renewcommand{\thepage}{\arabic{page}} }
 
 %===============================================================================
 % 'Desligar' hifenacao
@@ -1163,9 +1180,8 @@
 \newcommand\nh[1]{{\language\nohyphen #1}}
 
 %===============================================================================
-% Redefinicao de l@chapter, l@section e l@subsection para acrescentar
-% a palavra 'Anexo' ou 'Apendice' no toc e ajustar identacao para
-% "nada identado" :-)
+% Redefinicao de l@chapter, l@section e l@subsection para acrescentar a palavra
+% 'Anexo' ou 'Apendice' no índice e ajustar identação para "nada identado"
 %===============================================================================
 \renewcommand*\l@chapter[2]{%
   \ifnum \c@tocdepth >\m@ne
@@ -1174,15 +1190,15 @@
     \setlength\@tempdima{1.5em}%
     \begingroup
     \ifx\AppendixTocName\undefined\else
-       \renewcommand{\numberline}[1]{\AppendixTocName~##1~~--~~}%
+      \renewcommand{\numberline}[1]{\AppendixTocName~##1~~--~~}%
     \fi
-      \parindent \z@ \rightskip \@pnumwidth
-      \parfillskip -\@pnumwidth
-      \leavevmode \bfseries
-      \advance\leftskip\@tempdima
-      \hskip -\leftskip
-      \@dottedtocline{0}{0em}{1.8em}{\normalfont\scshape\large{#1}}{#2}
-      \penalty\@highpenalty
+    \parindent \z@ \rightskip \@pnumwidth
+    \parfillskip -\@pnumwidth
+    \leavevmode \bfseries
+    \advance\leftskip\@tempdima
+    \hskip -\leftskip
+    \@dottedtocline{0}{0em}{1.8em}{\normalfont\scshape\large{#1}}{#2}
+    \penalty\@highpenalty
     \endgroup
   \fi
 }
@@ -1219,7 +1235,7 @@
 \setlength\abovecaptionskip{6\p@}
 \setlength\belowcaptionskip{4\p@}
 
-% Redefinicao do caracter que separa o label Figura ou Tabela do texto
+% Redefinição do caracter que separa o label da Figura ou Tabela do texto
 %\renewcommand*\captionlabeldelim{\ --}
 
 %===============================================================================
@@ -1229,12 +1245,12 @@
 \def\FigureITA@dottedtocline#1#2#3#4#5{\begingroup
   \def\numberline##1{\hb@xt@\@tempdima{\itafigurenamebabel~##1 --\hfil}}%
   \@dottedtocline{#1}{#2}{#3}{#4}{#5}%
-\endgroup}
+  \endgroup}
 \def\TableITA@dottedtocline#1#2#3#4#5{\begingroup
   \def\numberline##1{\hb@xt@\@tempdima{\itatablenamebabel~##1 --\hfil}}%
   \@dottedtocline{#1}{#2}{#3}{#4}{#5}%
-\endgroup}
-% faz a lista de figuras e de tabelas usarem as novas versoes dos \dottedtocline
+  \endgroup}
+% faz a lista de figuras e de tabelas usarem as novas verõoes dos \dottedtocline
 \renewcommand*\l@figure{\FigureITA@dottedtocline{1}{0cm}{2.8cm}}
 \renewcommand*\l@table{\TableITA@dottedtocline{1}{0cm}{2.8cm}}
 
@@ -1243,11 +1259,9 @@
 %===============================================================================
 \newcommand{\esp}{.2cm}
 
-
 % Definicoes dos valores dos campos do formulario
 \newcommand{\FRDitadata}[1]{\gdef\FRDitadatababel{#1}}
 \newcommand{\FRDitadocnro}[1]{\gdef\FRDitadocnrobabel{#1}}
-
 
 \gdef\FRDitaorgaointernobabel{\italongname\ -- \itashortname}
 \newcommand{\FRDitaorgaointerno}[1][\italongname\ -- \itashortname]{\gdef\FRDitaorgaointernobabel{#1}}
@@ -1262,21 +1276,20 @@
 
 % Opções para documento
 \newcommand{\FRDitaOpcoes}[2]{
+  % Nacional ou Internacional - N/I
+    \gdef\N{\ } \gdef\I{\ }
+    \ifthenelse{\equal{#1}{N}}{\gdef\N{\textbf{X}}}{}
+    \ifthenelse{\equal{#1}{I}}{\gdef\I{\textbf{X}}}{}
 
-% Nacional ou Internacional - N/I
-  \gdef\N{\ } \gdef\I{\ }
-  \ifthenelse{\equal{#1}{N}}{\gdef\N{\textbf{X}}}{}
-  \ifthenelse{\equal{#1}{I}}{\gdef\I{\textbf{X}}}{}
-
-% Ostensivo, Reservado, Secreto ou Ultrasecreto - O/R/S/U
-% Níveis de confidencialidade definitos pela Lei de Acesso à  Informação (LAI)
-% Lei nº 12.527, de 18/11/2011
-% https://wikilai.fiquemsabendo.com.br/wiki/Texto_da_LAI
-  \gdef\O{\ } \gdef\R{\ } \gdef\S{\ } \gdef\U{\ }
-  \ifthenelse{\equal{#2}{O}}{\gdef\O{\textbf{X}}}{}
-  \ifthenelse{\equal{#2}{R}}{\gdef\R{\textbf{X}}}{}
-  \ifthenelse{\equal{#2}{S}}{\gdef\S{\textbf{X}}}{}
-  %\ifthenelse{\equal{#2}{U}}{\gdef\S{\textbf{X}}}{}
+  % Ostensivo, Reservado, Secreto ou Ultrasecreto - O/R/S/U
+  % Níveis de confidencialidade definitos pela Lei de Acesso à  Informação (LAI)
+  % Lei nº 12.527, de 18/11/2011
+  % https://wikilai.fiquemsabendo.com.br/wiki/Texto_da_LAI
+    \gdef\O{\ } \gdef\R{\ } \gdef\S{\ } \gdef\U{\ }
+    \ifthenelse{\equal{#2}{O}}{\gdef\O{\textbf{X}}}{}
+    \ifthenelse{\equal{#2}{R}}{\gdef\R{\textbf{X}}}{}
+    \ifthenelse{\equal{#2}{S}}{\gdef\S{\textbf{X}}}{}
+    %\ifthenelse{\equal{#2}{U}}{\gdef\S{\textbf{X}}}{}
 }
 
 % Folha de Registro de Documento (FRD)
@@ -1304,19 +1317,22 @@
   % Adicionar FRD ao outline do documento pdf
   \pdfbookmark[0]{\itapagedocregbabel}{bla}
 
-  % Conteuro da FRD
+  % Conteúdo da FRD
   \noindent\begin{tabularx}{\textwidth}{|l|l|l|l|}
     \hline
-    \multicolumn{ 4}{|c|}{                                          } \\
-    \multicolumn{ 4}{|c|}{\normalsize FOLHA DE REGISTRO DO DOCUMENTO} \\
-    \multicolumn{ 4}{|c|}{                                          } \\
+    % Título da FRD
+    \multicolumn{4}{|c|}{}                                                    \\
+    \multicolumn{4}{|c|}{\normalsize FOLHA DE REGISTRO DO DOCUMENTO}          \\
+    \multicolumn{4}{|c|}{}                                                    \\
     \hline
 
-    $^{1.}$ \scriptsize CLASSIFICAÇÃO/TIPO &
-    $^{2.}$ \scriptsize DATA               &
-    $^{3.}$ \scriptsize REGISTRO Nº        &
-    $^{4.}$ \scriptsize Nº DE PÁGINAS      \tabularnewline
+    % Cabeçalhos da segunda linha
+    $^{1.}$ \scriptsize CLASSIFICAÇÃO/TIPO                                     &
+    $^{2.}$ \scriptsize DATA                                                   &
+    $^{3.}$ \scriptsize REGISTRO Nº                                            &
+    $^{4.}$ \scriptsize Nº DE PÁGINAS                            \tabularnewline
 
+    % Conteudo da segunda linha
     \multicolumn{ 1}{|c|}{
       \ifthenelse{\equal{\itaoptionlevel}{tg}}
         {TC}
@@ -1330,43 +1346,45 @@
     \multicolumn{ 1}{c|}{\NumPenultimaPagina           } \tabularnewline
     [\esp]
     \hline
-    \multicolumn{ 4}{|l|}{$^{5.}$ \scriptsize TÍTULO E SUBTÍTULO:} \\
-    \multicolumn{ 4}{|l|}{\nh{\parbox[b]{.97\textwidth}{\@title}}} \\
+    \multicolumn{4}{|l|}      {$^{5.}$ \scriptsize TÍTULO E SUBTÍTULO:} \\
+    \multicolumn{4}{|l|}{\nh{\parbox[b]{.97\textwidth}{\@title}}}                             \\
     [\esp]
     \hline
-    \multicolumn{ 4}{|l|}{$^{6.}$ \scriptsize
+    \multicolumn{4}{|l|}{$^{6.}$ \scriptsize
       \ifthenelse{\equal{\authorgendermf}{mas}}{AUTOR}{AUTORA}:} \\
-    \multicolumn{ 4}{|l|}{\textbf{\@authorfirst\ \@authorlast}}  \\
+    \multicolumn{4}{|l|}{\textbf{\@authorfirst\ \@authorlast}}                                \\
     [\esp]
     \hline
-    \multicolumn{ 4}{|l|}{$^{7.}$ \scriptsize
+    \multicolumn{4}{|l|}{$^{7.}$ \scriptsize
       INSTITUIÇÃO(ÕES)/ÓRGÃO(S) INTERNO(S)/DIVISÃO(ÕES):} \\
-    \multicolumn{ 4}{|l|}{\FRDitaorgaointernobabel} \\
+    %\multicolumn{4}{|l|}{Instituto Tecnológico de Aeronáutica -- ITA} \\
+    \multicolumn{4}{|l|}{\FRDitaorgaointernobabel} \\
     [\esp]
     \hline
-    \multicolumn{ 4}{|l|}{$^{8.}$ \scriptsize
+    \multicolumn{4}{|l|}{$^{8.}$ \scriptsize
       PALAVRAS-CHAVE SUGERIDAS
       \ifthenelse{\equal{\authorgendermf}{mas}}{PELO AUTOR}{PELA AUTORA}:} \\
-    \multicolumn{ 4}{|p{0.97\textwidth}|}{\FRDitapalavrasautorbabel} \\
+    \multicolumn{4}{|p{0.97\textwidth}|}{\FRDitapalavrasautorbabel} \\
     [\esp]
     \hline
-    \multicolumn{ 4}{|l|}{$^{9.}$ \scriptsize
-      PALAVRAS-CHAVE RESULTANTES DE INDEXAÇÃO:} \\
-    \multicolumn{ 4}{|p{0.97\textwidth}|}{\FRDitapalavrasresultbabel} \\
+    \multicolumn{4}{|l|}{$^{9.}$ \scriptsize
+      PALAVRAS-CHAVE RESULTANTES DE INDEXAÇÃO:}        \\
+    \multicolumn{4}{|p{0.97\textwidth}|}{\FRDitapalavrasresultbabel} \\
     [\esp]
     \hline
-    \multicolumn{ 4}{|l|}{$^{10.}$ {\scriptsize APRESENTAÇÃO:} \hfill
-      \textbf{(\N) Nacional\ \ \ (\I) Internacional}} \\
-    \multicolumn{ 4}{|p{0.97\textwidth}|}{\FRDitapalavraapresentacaobabel} \\
+    \multicolumn{4}{|l|}{$^{10.}$
+      {\scriptsize APRESENTAÇÃO:}  \hfill \textbf{(\N) Nacional \ \ \ (\I) Internacional}} \\
+    %\multicolumn{4}{|p{0.97\textwidth}|}{ITA, São José dos Campos, \@publyear, \NumPenultimaPagina\ páginas} \\
+    \multicolumn{4}{|p{0.97\textwidth}|}{\FRDitapalavraapresentacaobabel} \\
     [\esp]
     \hline
-    \multicolumn{ 4}{|l|}{$^{11.}$ \scriptsize RESUMO:} \\
-    %\multicolumn{ 4}{|p{0.97\textwidth}|}{\parbox[t][12cm]{0.97\textwidth}{\FDRitaabstractcontent}} \\
-    \multicolumn{ 4}{|c|}{\parbox[t][12cm]{.97\textwidth}{\FDRitaabstractcontent}} \\
+    \multicolumn{4}{|l|}{$^{11.}$ \scriptsize RESUMO:}                                        \\
+    %\multicolumn{4}{|p{0.97\textwidth}|}{\parbox[t][12cm]{0.97\textwidth}{\FDRitaabstractcontent}} \\
+    \multicolumn{4}{|c|}{\parbox[t][12cm]{.97\textwidth}{\FDRitaabstractcontent}} \\
     [\esp]
     \hline
-    \multicolumn{ 4}{|l|}{$^{12.}$ \scriptsize GRAU DE SIGILO:} \\
-    \multicolumn{ 4}{|c|}{       \hfill\
+    \multicolumn{4}{|l|}{$^{12.}$ \scriptsize GRAU DE SIGILO:}                                \\
+    \multicolumn{4}{|c|}{       \hfill\
       (\O) \textbf{OSTENSIVO}    \hfill\
       (\R) \textbf{RESERVADO}    \hfill\
       (\S) \textbf{SECRETO}      \hfill\
@@ -1401,7 +1419,6 @@
 
 %===============================================================================
 % Obtendo o numero da penultima pagina, visto que a FRD nao é contada
-% Thanks to Dr. Miguel V. S. Frasson!! :-)
 %===============================================================================
 \def\deixasosegundo#1#2#3!{#2}
 \makeatletter
