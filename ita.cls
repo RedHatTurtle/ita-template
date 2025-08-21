@@ -167,6 +167,7 @@
 % Pacotes extras necessários para a classe ita
 %===============================================================================
 
+\RequirePackage{csquotes}    % Pacote para aspas "automáticas"
 \RequirePackage{hyphenat}    % Controles de hifenização
 \RequirePackage{setspace}    % Configura espaçamento de linhas
 \RequirePackage{fancyhdr}    % Controle detalhado de cabeçalhos e rodapés
@@ -226,7 +227,6 @@
 
 \RequirePackage[debug,
                 breaklinks,
-                pagebackref=true,
                 bookmarksopen=true,
                 colorlinks=true,
                 linkcolor=linkColor,
@@ -1119,7 +1119,7 @@
 }
 
 %===============================================================================
-% Redefinicao do comando \appendix para mostrar 'Apêndice' ou 'Anexo' no Sumario
+% Redefinicao do comando \appendix para mostrar 'Apêndice' ou 'Anexo' no Sumário
 %===============================================================================
 \renewcommand{\appendix}{%
   \cleardoublepage
