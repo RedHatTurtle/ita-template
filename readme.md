@@ -26,6 +26,10 @@ usados pelo template.
 Citações via Natbib+BibTex (implementação original):
 - `texlive-abntex2`
 
+Citações via BibLatex+Biber (implementação nova):
+- `texlive-biber `
+- `texlive-biblatex-abnt`
+
 ## Bibliografia e Referências
 Além disso a pasta `bib` contém os arquivos de bibliografia com todas as
 referências que serão citadas ao longo do texto. O LaTeX usas esses arquivos

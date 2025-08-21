@@ -185,6 +185,9 @@
 % Número CDU - (usando somente para TG)
 %\cdu{621.38}
 
+% Arquivos de bibliografia para BibLatex (acho que podem ser vários)
+\addbibresource{bib/itaTemplate_bibliography.bib}
+
 \begin{document}
   % Inicia a contagem de paginas com numeração romana até "\mainmatter"
   \frontmatter
@@ -254,8 +257,13 @@
   \input{texts/cap5/capitulo5.tex} % Conclusão
 
   % Referências Bibliográficas (implementação original, via natbib)
-  \renewcommand\bibname{\itareferencesnamebabel} % Renomear título do capítulo referências
-  \bibliography{bib/itaTemplate_bibliography.bib}
+  %\renewcommand\bibname{\itareferencesnamebabel} % Renomear título do capítulo referências
+  %\bibliography{bib/referencias.bib}
+
+  % Referências Bibliográficas (nova implementação, via biblatex)
+  % Aqui apenas informamos o ponto onde deve ser inclusa a bibliografia no texto
+  % Os arquivos "*.bib" já foram incluidos anteriormente com o comando "addbibresource"
+  \printbibliography[heading=bibintoc,title=\itareferencesnamebabel] % Renomear título do capítulo referências
 
   \appendix % Apêndices (opcional)
   % Caso os apêndices não sejam utilizados comentar ou remover os comandos `input`

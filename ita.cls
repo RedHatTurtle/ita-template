@@ -239,21 +239,35 @@
 %===============================================================================
 % Formatação ABNT para citações
 %===============================================================================
+% Implementação Original
 % O ABNTeX2 usa o pacote `natbib` para montar referências no estilo ABNT
 % O `natbib` está ficnado obsoleto embora ainda seja usado por algumas revistas
-\RequirePackage[alf,
-                abnt-emphasize=bf,
-                abnt-etal-cite=2,
-                abnt-etal-list=0,
-                abnt-etal-text=it]
-               {abntex2cite}
+%\RequirePackage[alf,
+%                abnt-emphasize=bf,
+%                abnt-etal-cite=2,
+%                abnt-etal-list=0,
+%                abnt-etal-text=it]
+%               {abntex2cite}
 
-% O pacote `biblatex` é o jeito "moderno" de fazer bibliografias mas para usa-lo
+% Implementação nova:
+% O pacote `biblatex` é o jeito moderno de fazer bibliografias mas para usa-lo
 % são necessárias várias mudanças no template que eu não estou disposto a fazer
-% no momento
+% no momento.
 % Em teoria o biblatex já tem as definições da ABNT internamente, basta
 % especificar a opção de estilo
-%\RequirePackage[style=abnt]{biblatex}
+\RequirePackage[style=abnt,
+                backend=biber,
+                backref=true]
+               {biblatex}
+
+% Estilo ABNT do BibLatex:
+% - https://github.com/abntex/biblatex-abnt
+% Manual do estilo ABNT:
+% - https://github.com/abntex/biblatex-abnt/raw/master/doc/biblatex-abnt.pdf
+% Manual do BibLatex:
+% - https://br.mirrors.cicku.me/ctan/macros/latex/contrib/biblatex/doc/biblatex.pdf
+% Folha de referência rápida para o BibLatex:
+% - https://tug.ctan.org/info/biblatex-cheatsheet/biblatex-cheatsheet.pdf
 
 %===============================================================================
 % Pacotes extras recomendados para teses
