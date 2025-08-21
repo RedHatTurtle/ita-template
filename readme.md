@@ -23,14 +23,14 @@ Dentro da pasta `texts` estão:
 Além disso a pasta `bib` contém os arquivos de bibliografia com todas as
 referências que serão citadas ao longo do texto. O LaTeX usas esses arquivos
 `xxx.bib` para gerar automaticamente o capítulo de referências segundo a
-especificação desejada (abnt por padrão).
+especificação desejada (ABNT por padrão).
 
 ## Compilação
 O documento pode ser compilado com o comando `make` usando o `Makefile` contido
-no repositório, nesse caso todos os arquivos de saida são salvos na pasta `build`
+no repositório, nesse caso todos os arquivos de saída são salvos na pasta `build`
 Ao serem compilados, os arquivos geram o arquivo final em .pdf (tese.pdf).
-Também é possivel compilar o documento com um programa externo como Texmaker,
-Texstudio ou a extensão LaTeX Workshop do VSCode, nesse caso o arquivo PDF é
+Também é possível compilar o documento com um programa externo como Texmaker,
+TeXstudio ou a extensão LaTeX Workshop do VSCode, nesse caso o arquivo PDF é
 gerado na mesma pasta do `main.tex`.
 
 ## Opções da classe ITA
