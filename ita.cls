@@ -109,6 +109,9 @@
 \RequirePackage{calc} % Not sure where this is used, or if it's used at all
 \RequirePackage{ifthen}
 
+% No futuro o Babel deve ser substituído pelo Polyglossia para gerenciamento de
+% idiomas.
+% https://ctan.org/pkg/polyglossia?lang=en
 \if@eng
   \RequirePackage[english]{babel}
   \input{\itaclassfile{babel/itaeng.babel}}
