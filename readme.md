@@ -19,6 +19,13 @@ Dentro da pasta `texts` estão:
 3. `apeX` Pastas com texto e figuras de cada apêndice utilizado (opcional)
 4. `aneX` Pastas com texto e figuras de cada anexo utilizado (opcional)
 
+## Dependências
+Em sistemas Linux pode ser necessário baixar manualmente alguns do pacotes Latex
+usados pelo template.
+
+Citações via Natbib+BibTex (implementação original):
+- `texlive-abntex2`
+
 ## Bibliografia e Referências
 Além disso a pasta `bib` contém os arquivos de bibliografia com todas as
 referências que serão citadas ao longo do texto. O LaTeX usas esses arquivos
