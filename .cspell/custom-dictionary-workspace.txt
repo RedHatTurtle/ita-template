@@ -1,0 +1,37 @@
+# Custom Dictionary Words
+Texmaker
+TeXstudio
+gmail
+
+#
+# ITA Template
+#
+
+# ITA Template author's names
+Volnei
+Meinertz
+Gómez
+
+# ITA Template author's emails
+ffs
+bcmaciel
+giovani
+bode
+pi
+gripp
+jamontemor
+tarcisio
+gripp
+aarc
+sagomezs
+unal
+ocimar
+acad
+fabiom
+
+# ITA Template words
+italus
+quali
+yahoogroups
+natbib
+biblatex
