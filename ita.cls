@@ -126,6 +126,7 @@
 
 % Check what TeX engine we're using, hopefully we're compiling with XeTex
 \ifXeTeX
+  \RequirePackage[TU]{fontenc}
   \RequirePackage[xetex]{graphicx}
   \RequirePackage[xetex]{geometry}
 \else
@@ -136,6 +137,7 @@
     \RequirePackage{url}
     \RequirePackage{breakurl}
 
+    \RequirePackage[TU]{fontenc}
     \RequirePackage[luatex]{graphicx}
     \RequirePackage[luatex]{geometry}
   \else
