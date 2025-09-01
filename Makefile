@@ -17,6 +17,7 @@ SRCS := $(TEX_SRCS) $(BIB_SRCS) $(IMG_SRCS)
 pdf: $(OUT_DIR)/main.pdf
 
 clean:
+	@echo "Removed /$(OUT_DIR)"
 	@rm -rf $(OUT_DIR)
 
 $(OUT_DIR)/main.pdf: $(SRCS)
