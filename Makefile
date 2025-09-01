@@ -3,7 +3,6 @@
 #
 # Mantenha sincronizado com o valor em .gitignore
 OUT_DIR ?= build
-CUR_DIR ?= $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
 
 # Opções passadas para latexmk.
 LATEXMK_FLAGS ?= -xelatex --synctex=1
