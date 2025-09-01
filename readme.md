@@ -35,10 +35,10 @@ especificação desejada (ABNT por padrão).
 ## Compilação
 O documento pode ser compilado com o comando `make` usando o `Makefile` contido
 no repositório, nesse caso todos os arquivos de saída são salvos na pasta `build`
-Ao serem compilados, os arquivos geram o arquivo final em .pdf (tese.pdf).
-Também é possível compilar o documento com um programa externo como Texmaker,
-TeXstudio ou a extensão LaTeX Workshop do VSCode, nesse caso o arquivo PDF é
-gerado na mesma pasta do `main.tex`.
+Ao serem compilados, os arquivos geram o arquivo final em .pdf (main.pdf) dentro
+da pasta "./build". Também é possível compilar o documento com um programa
+externo como Texmaker, TeXstudio ou a extensão LaTeX Workshop do VSCode, nesse
+caso o arquivo PDF é gerado na mesma pasta do `main.tex`.
 
 ## Opções da classe ITA
 No arquivo `tese.tex`
