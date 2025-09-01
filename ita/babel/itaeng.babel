@@ -25,7 +25,7 @@
 \gdef\itaworklevelqualibabel{Qualifying Exam}
 \gdef\itaqualifictextbabel{{\nh{
   \itaworklevel\ presented in partial fulfillment of the requirements for the
-  degree of \itaworktitle\ in the Graduate Program of \itaworkcourse,
+  degree of \itauthortitle\ in the Graduate Program of \itaworkcourse,
   \itaworkarea\ {A}rea.
 }}}
 \gdef\itaauthortitlequalibabel{Doctor of Science}
