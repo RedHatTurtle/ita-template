@@ -3,6 +3,7 @@
 #
 # Mantenha sincronizado com o valor em .gitignore
 OUT_DIR ?= build
+CUR_DIR ?= $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
 
 # Opções passadas para latexmk.
 LATEXMK_FLAGS ?= -xelatex --synctex=1
@@ -23,5 +24,6 @@ clean:
 $(OUT_DIR)/main.pdf: $(SRCS)
 	@rm -rf $(OUT_DIR)
 	@latexmk $(LATEXMK_FLAGS) -output-directory=$(OUT_DIR) main.tex
+	@cp $(OUT_DIR)/main.pdf .
 
 PHONY: pdf clean
