@@ -13,14 +13,20 @@ IMG_SRCS := $(shell find . -type f -name "*.jpg" -or -name "*.png" -or -name "*.
 
 SRCS := $(TEX_SRCS) $(BIB_SRCS) $(IMG_SRCS)
 
-# Compilar a versão final do PDF.
-pdf: $(OUT_DIR)/main.pdf
+# Receitas de compilação do Makefile
+all: compile copy
+.PHONY: all
+
+compile: $(SRCS)
+	@latexmk $(LATEXMK_FLAGS) -output-directory=$(OUT_DIR) main.tex
+	@make copy
+
+copy:
+	@cp $(OUT_DIR)/main.pdf .
 
 clean:
+	@echo "Removed /$(OUT_DIR)"
 	@rm -rf $(OUT_DIR)
 
-$(OUT_DIR)/main.pdf: $(SRCS)
-	@rm -rf $(OUT_DIR)
-	@latexmk $(LATEXMK_FLAGS) -output-directory=$(OUT_DIR) main.tex
-
-PHONY: pdf clean
+cleanall: clean
+	@rm ./main.pdf
