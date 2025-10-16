@@ -120,7 +120,6 @@
 %===============================================================================
 % Check TeX engine used to compile the document and add distro specific packages
 %===============================================================================
-
 % Comandos de verificação de engine de tex usada, ex: pdfTex, XeTex, LuaTex
 \RequirePackage{iftex}
 
@@ -166,7 +165,6 @@
 %===============================================================================
 % Pacotes extras necessários para a classe ita
 %===============================================================================
-
 \RequirePackage{csquotes}    % Pacote para aspas "automáticas"
 \RequirePackage{hyphenat}    % Controles de hifenização
 \RequirePackage{setspace}    % Configura espaçamento de linhas
@@ -186,7 +184,6 @@
 %===============================================================================
 % Dimensões padrão de páginas
 %===============================================================================
-
 % Dimensões das páginas
 \geometry{a4paper,
           %showframe,  % Used only to debug margin settings
@@ -243,7 +240,6 @@
 %===============================================================================
 % Formatação ABNT para citações
 %===============================================================================
-
 % O ABNTeX2 usa o pacote `natbib` para montar referências no estilo ABNT
 % O `natbib` está ficnado obsoleto embora ainda seja usado por algumas revistas
 \RequirePackage[alf,
@@ -263,7 +259,6 @@
 %===============================================================================
 % Pacotes extras recomendados para teses
 %===============================================================================
-
 % American Mathematical Society packages
 %\RequirePackage{amsmath}     % Ambiente de matemática e equações avançado
 %\RequirePackage{amsfonts}    % Fontes p/ conjuntos: R, Z, H, etc
@@ -619,10 +614,10 @@
   \@makecippage        % Função para criar verso da folha de rosto
   \@listexaminators    % Função para criar a folha de banca
 }
+
 %===============================================================================
 % Capa de TG
 %===============================================================================
-
 \newcommand{\maketgcover}{%
   \pdfbookmark[0]{\namecover}{cover}
   \thispagestyle{empty}
@@ -1245,14 +1240,14 @@
 %===============================================================================
 \renewcommand*{\l@figure}{\@dottedtocline{1}{0cm}{1cm}}
 \def\FigureITA@dottedtocline#1#2#3#4#5{\begingroup
-  \def\numberline##1{\hb@xt@\@tempdima{\itafigurenamebabel~##1 --\hfil}}%
+  \def\numberline##1{\hb@xt@\@tempdima{\itafigurenamebabel~##1\hfill--\hspace{0.8em}}}%
   \@dottedtocline{#1}{#2}{#3}{#4}{#5}%
   \endgroup}
 \def\TableITA@dottedtocline#1#2#3#4#5{\begingroup
-  \def\numberline##1{\hb@xt@\@tempdima{\itatablenamebabel~##1 --\hfil}}%
+  \def\numberline##1{\hb@xt@\@tempdima{\itatablenamebabel~##1\hfill--\hspace{0.8em}}}%
   \@dottedtocline{#1}{#2}{#3}{#4}{#5}%
   \endgroup}
-% faz a lista de figuras e de tabelas usarem as novas verõoes dos \dottedtocline
+% faz a lista de figuras e de tabelas usarem as novas verões dos \dottedtocline
 \renewcommand*\l@figure{\FigureITA@dottedtocline{1}{0cm}{2.8cm}}
 \renewcommand*\l@table{\TableITA@dottedtocline{1}{0cm}{2.8cm}}
 

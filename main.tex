@@ -45,9 +45,21 @@
 %\usepackage{amssymb}     % Símbolos matemáticos
 %\usepackage{amsthm}      % Theorem writing tools
 
+% Chemistry Packages (talvez fixar a versão)
+% \usepackage{chemfig}
+% \usepackage{mhchem}
+
+% Unit Package
+%\usepackage{siunitx}     % Pacote para utilizar unidades de medida diversas
+
+% Figure Packages
 %\usepackage{epsfig}
 %\usepackage{subfig}
+
+% Table Package
 %\usepackage{multirow}
+
+% Package for Placement of Figs, Tabs, and others
 %\usepackage{float}
 
 % Talvez jogar para o ita.cls?
@@ -62,7 +74,8 @@
 
 %===============================================================================
 % Identificações (se o trabalho for em inglês, insira os dados em inglês)
-% Para entradas abreviadas de Professora (Profa.) em português escreva: Prof$^\textnormal{a}$.
+% Para entradas abreviadas de Professora (Profa.) em português escreva:
+%     Prof$^\textnormal{a}$.
 %===============================================================================
 % Cursos de Graduação do ITA:
 % - Engenharia Aeronáutica
@@ -130,7 +143,7 @@
 % #3 - Cidade e sigla do estado, separados por hífen. Ex: "Campinas - SP"
 \itaauthoraddress{Praça Mal Eduardo Gomes 50}
                  {12228-904}
-                 {S\~{a}o Jos\'{e} dos Campos - SP}
+                 {São José dos Campos - SP}
 
 % Titulo do Trabalho/Dissertação/Tese
 \title{Modelo Latex para TG / Dissertação / Tese do ITA}
@@ -180,6 +193,7 @@
 %\cdu{621.38}
 
 \begin{document}
+  \frontmatter  % Muda as páginas para numeração romana até aparecer o \mainmatter
   % Folha de Rosto e Capa para o caso do TG
   \maketitle
 
@@ -261,7 +275,6 @@
   %=============================================================================
   % Definição da Folha de Registro do Documento (FRD)
   %=============================================================================
-
   % Valores dos campos da FRD
 
   % Data do registro do documento
