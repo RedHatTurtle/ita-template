@@ -1179,32 +1179,32 @@
 % Redefinicao de l@chapter, l@section e l@subsection para acrescentar a palavra
 % 'Anexo' ou 'Apendice' no índice e ajustar identação para "nada identado"
 %===============================================================================
+% l@chapter
 \renewcommand*\l@chapter[2]{%
   \ifnum \c@tocdepth >\m@ne
     \addpenalty{-\@highpenalty}%
     \vskip -3ex \@plus\p@
     \setlength\@tempdima{1.5em}%
     \begingroup
-    \ifx\AppendixTocName\undefined\else
-      \renewcommand{\numberline}[1]{\AppendixTocName~##1~~--~~}%
-    \fi
-    \parindent \z@ \rightskip \@pnumwidth
-    \parfillskip -\@pnumwidth
-    \leavevmode \bfseries
-    \advance\leftskip\@tempdima
-    \hskip -\leftskip
-    \@dottedtocline{0}{0em}{1.8em}{\normalfont\scshape\large{#1}}{#2}
-    \penalty\@highpenalty
+      \ifx\AppendixTocName\undefined\else
+        \renewcommand{\numberline}[1]{\AppendixTocName~##1~~--~~}%
+      \fi
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      \@dottedtocline{0}{0em}{1.8em}{\normalfont\scshape\large{#1}}{#2}
+      \penalty\@highpenalty
     \endgroup
   \fi
 }
 
 % l@section
-\renewcommand*{\l@section}[2]{%
-\@dottedtocline{1}{0.5cm}{2.8em}{\textbf{#1}}{\hss #2}}
+\renewcommand*{\l@section}[2]{\@dottedtocline{1}{0.5cm}{2.8em}{\textbf{#1}}{#2}}
 
 % l@subsection
-\renewcommand*{\l@subsection}{\@dottedtocline{2}{1cm}{3.7em}}
+\renewcommand*{\l@subsection}[2]{\@dottedtocline{2}{1cm}{3.7em}{#1}{#2}}
 
 %===============================================================================
 % Numerar o subsubsection conforme definido anteriormente
