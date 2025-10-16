@@ -6,7 +6,7 @@ OUT_DIR ?= build
 TKZ_DIR ?= $(OUT_DIR)/tikz
 
 # Opções passadas para latexmk.
-LATEXMK_FLAGS ?= -xelatex -shell-escape --synctex=1
+LATEXMK_FLAGS ?= -lualatex -shell-escape --synctex=1
 
 TKZ_SRCS := $(shell find . -type f -name "*.tikz.tex")	# This extension can change
 TEX_SRCS := $(shell find . -type f -name "*.tex")

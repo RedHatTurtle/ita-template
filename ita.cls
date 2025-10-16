@@ -123,22 +123,21 @@
 % Comandos de verificação de engine de tex usada, ex: pdfTex, XeTex, LuaTex
 \RequirePackage{iftex}
 
-% Check what TeX engine we're using, hopefully we're compiling with XeTex
-\ifXeTeX
-  \RequirePackage[TU]{fontenc}
-  \RequirePackage[xetex]{graphicx}
-  \RequirePackage[xetex]{geometry}
-\else
-  % LuaTeX is slower and we don't really need the Lua features but at least the
-  % fonts are as good as in XeTeX
-  \ifLuaTeX
-    % LuaTeX need these packages to break links into two lines
-    \RequirePackage{url}
-    \RequirePackage{breakurl}
+% LuaTeX is the standard LaTeX engine currently and supports Unicode fonts
+\ifLuaTeX
+  % LuaTeX need these packages to break links into two lines
+  \RequirePackage{url}
+  \RequirePackage{breakurl}
 
+  \RequirePackage[TU]{fontenc}
+  \RequirePackage[luatex]{graphicx}
+  \RequirePackage[luatex]{geometry}
+\else
+  % XeTeX has the same Unicode font support as LuaTeX but is being slowly deprecated
+  \ifXeTeX
     \RequirePackage[TU]{fontenc}
-    \RequirePackage[luatex]{graphicx}
-    \RequirePackage[luatex]{geometry}
+    \RequirePackage[xetex]{graphicx}
+    \RequirePackage[xetex]{geometry}
   \else
     % Worst case require at least PDFTeX
     \RequirePDFTeX
