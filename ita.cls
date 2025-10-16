@@ -1235,18 +1235,19 @@
 %\renewcommand*\captionlabeldelim{\ --}
 
 %===============================================================================
-% Indentar a segunda linha de captions longos das listas de figuras e tabelas
+% Indentar a segunda linha dos captions longos das listas de figuras e tabelas e
+% "centralizar" o traço entre a numeraçõa da figura/tabela e o caption
 %===============================================================================
 \renewcommand*{\l@figure}{\@dottedtocline{1}{0cm}{1cm}}
 \def\FigureITA@dottedtocline#1#2#3#4#5{\begingroup
-  \def\numberline##1{\hb@xt@\@tempdima{\itafigurenamebabel~##1 --\hfil}}%
+  \def\numberline##1{\hb@xt@\@tempdima{\itafigurenamebabel~##1\hfill--\hspace{0.8em}}}%
   \@dottedtocline{#1}{#2}{#3}{#4}{#5}%
   \endgroup}
 \def\TableITA@dottedtocline#1#2#3#4#5{\begingroup
-  \def\numberline##1{\hb@xt@\@tempdima{\itatablenamebabel~##1 --\hfil}}%
+  \def\numberline##1{\hb@xt@\@tempdima{\itatablenamebabel~##1\hfill--\hspace{0.8em}}}%
   \@dottedtocline{#1}{#2}{#3}{#4}{#5}%
   \endgroup}
-% faz a lista de figuras e de tabelas usarem as novas verõoes dos \dottedtocline
+% Faz a lista de figuras e de tabelas usarem as novas verões dos \dottedtocline
 \renewcommand*\l@figure{\FigureITA@dottedtocline{1}{0cm}{2.8cm}}
 \renewcommand*\l@table{\TableITA@dottedtocline{1}{0cm}{2.8cm}}
 
