@@ -39,26 +39,31 @@
 % Pacotes extras recomendados para teses
 %===============================================================================
 
-% AMS Packages
+% American Mathematical Society packages
 %\usepackage{amsmath}     % Ambiente de matemática e equações avançado
 %\usepackage{amsfonts}    % Fontes p/ conjuntos: R, Z, H, etc
 %\usepackage{amssymb}     % Símbolos matemáticos
-%\usepackage{amsthm}      % Theorem writing tools
+%\usepackage{amsthm}      % Ambinente para teoremas `\theorem`
 
+% Chemistry Packages (talvez fixar a versão)
+% \usepackage{chemfig}
+% \usepackage{mhchem}
+
+% Unit Package
+%\usepackage{siunitx}     % Pacote para utilizar unidades de medida diversas
+
+% Figure Packages
 %\usepackage{epsfig}
 %\usepackage{subfig}
+
+% Table Package
 %\usepackage{multirow}
-%\usepackage{float}
 
 % Talvez jogar para o ita.cls?
 \usepackage{tikz}
 \usetikzlibrary{external}
 % https://stackoverflow.com/questions/40768426/tikz-externalize-issue-when-using-pdflatex-with-output-directory
 \tikzexternalize[prefix=tikz/,shell escape={-shell-escape\space-output-directory=build}]
-% \newcommand{\inputtikz}[1]{%
-%   \tikzsetnextfilename{#1}%
-%   \input{#1.tikz}%
-% }
 
 %===============================================================================
 % Identificações (se o trabalho for em inglês, insira os dados em inglês)

@@ -264,18 +264,22 @@
 %\RequirePackage{amssymb}     % Símbolos matemáticos
 %\RequirePackage{amsthm}      % Ambinente para teoremas `\theorem`
 
+%\RequirePackage{multirow}
+
+% Figure Packages
 %\RequirePackage{epsfig}
 %\RequirePackage{subfig}
-%\RequirePackage{multirow}
-%\RequirePackage{float}
-
-\RequirePackage{setspace}
-\RequirePackage{fancyhdr}
-\RequirePackage{lastpage}
-\RequirePackage{indentfirst}
-\RequirePackage{caption}
-\RequirePackage{array}
 \RequirePackage{subfigure}
+
+% Package for automatic placement of figures, tables and other floating elements
+\RequirePackage{float}
+
+\RequirePackage{setspace}       % Package for setting line spacing in document
+\RequirePackage{fancyhdr}       % Fancy Headers
+\RequirePackage{lastpage}       % Reference the number of pages of the document
+\RequirePackage{indentfirst}    % Indent paragraph after section header
+\RequirePackage{caption}        % Customization tools for captions
+\RequirePackage{array}          % Extended array and tabular environments
 
 %===============================================================================
 % Alterar os tamanhos de fonte padrão do Tex para os valores usados no template
